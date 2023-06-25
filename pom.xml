@@ -5,29 +5,34 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.13</version>
+        <version>3.1.1</version>
         <relativePath/>
     </parent>
-    <groupId>com.shaw</groupId>
+
+    <packaging>pom</packaging>
+    <groupId>com.shaw.dynamo</groupId>
     <artifactId>code-dynamo</artifactId>
     <version>1.0.0</version>
-    <name>code-dynamo</name>
-    <description>code-dynamo</description>
+
     <properties>
         <java.version>8</java.version>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+        <snakeyaml.version>2.0</snakeyaml.version>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    </properties>
+
+    <modules>
+        <module>dynamo-datasource</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

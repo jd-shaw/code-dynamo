@@ -1,10 +1,10 @@
-package com.shaw.dynamo;
+package com.shaw.mongodb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CodeDynamoApplicationTests {
+class MongodbApplicationTests {
 
     @Test
     void contextLoads() {
