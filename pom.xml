@@ -14,15 +14,22 @@
     <artifactId>code-dynamo</artifactId>
     <version>1.0.0</version>
 
+    <modules>
+        <module>dynamo-app</module>
+        <module>dynamo-commons</module>
+        <module>dynamo-datasource</module>
+    </modules>
+
     <properties>
         <java.version>8</java.version>
         <snakeyaml.version>2.0</snakeyaml.version>
-
+        <commons-io.version>2.4</commons-io.version>
+        <jackson.version>2.12.3</jackson.version>
+        <guava.version>14.0.1</guava.version>
+        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <commons-net.version>2.2</commons-net.version>
+        <commons-collections.version>4.4</commons-collections.version>
     </properties>
-
-    <modules>
-        <module>dynamo-datasource</module>
-    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -31,6 +38,59 @@
                 <artifactId>snakeyaml</artifactId>
                 <version>${snakeyaml.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+
+            <!-- JSON begin -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-hibernate4</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- JSON end -->
+
+            <!-- google java library -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

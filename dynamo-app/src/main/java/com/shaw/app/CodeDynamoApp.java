@@ -16,10 +16,10 @@ import java.text.MessageFormat;
  */
 @Slf4j
 @SpringBootApplication
-public class App {
+public class CodeDynamoApp {
 
     public static void main(String[] args) throws UnknownHostException {
-        ConfigurableApplicationContext application = SpringApplication.run(App.class, args);
+        ConfigurableApplicationContext application = SpringApplication.run(CodeDynamoApp.class, args);
         Environment env = application.getEnvironment();
         // 环境变量
         String appName = env.getProperty("spring.application.name");

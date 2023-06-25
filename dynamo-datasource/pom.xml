@@ -16,9 +16,44 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <hibernate.version>5.4.32.Final</hibernate.version>
+        <spring-orm.version>5.3.24</spring-orm.version>
+        <dynamo.commons.utils>1.0.0</dynamo.commons.utils>
     </properties>
 
+    <modules>
+        <module>dynamo-datasource-mysql</module>
+        <module>dynamo-datasource-mongodb</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-orm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.shaw.commons</groupId>
+            <artifactId>dynamo-commons-utils</artifactId>
+            <version>${dynamo.commons.utils}</version>
+        </dependency>
 
     </dependencies>
 </project>

@@ -1,1 +1,7 @@
-
+server:
+  port: 8000
+spring:
+  application:
+    name: dynamo-app
+  profiles:
+    active: dev

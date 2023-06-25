@@ -1,13 +1,13 @@
-package com.shaw.datasource;
+package com.example.mysql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DynamoDatasourceApplicationTests {
+class DynamoDatasourceMysqlApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
