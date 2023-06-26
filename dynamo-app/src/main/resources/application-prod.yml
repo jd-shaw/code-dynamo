@@ -3,5 +3,5 @@ server:
 spring:
   application:
     name: dynamo-app
-  profiles:
-    active: dev
+
+
