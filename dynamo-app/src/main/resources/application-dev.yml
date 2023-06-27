@@ -4,3 +4,63 @@ spring:
   application:
     name: dynamo-app
 
+    hikari:
+      # 30 秒, 心跳检测
+      keepalive-time: 30000
+      # 300 分钟, 连接最大存活时间
+      max-lifetime: 18000000
+  jpa:
+    show-sql: true
+    open-in-view: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/code-dynamo?serverTimezone=GMT%2B8&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+  #静态资源加载配置
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/public/
+  thymeleaf:
+    cache: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
+# 自定义配置信息
+dynamo:
+  common:
+    swagger:
+      enabled: true
+      author: dynamo
+      version: 0.0.1
+      title: dynamo项目
+      description: code-dynamo项目
+      # basic认证
+      basic:
+        enable: true
+      base-packages:
+        "[身份识别和管理]":
+          - com.shaw.iam
+        "[认证与权限]":
+          - com.shaw.auth
+    # 认证
+  starter:
+    auth:
+      default-password: 123456
+      ignore-urls:
+        - '/actuator/**'
+        - '/v3/api-docs/**'
+        - '/doc.html'
+        - '/swagger-resources/**'
+        - '/token/**'
+        - '/ws/**'
+        - '/demo/**'
+        - '/test/**'
+        - "/plumelog/**"
+        - '/webjars/**'
+        - '/css/**'
+        - '/error'
+        - '/favicon.ico'
+        - '/**'

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>code-dynamo</artifactId>
+        <groupId>com.shaw.dynamo</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <artifactId>dynamo-services</artifactId>
+    <groupId>com.shaw.services</groupId>
+    <version>1.0.0</version>
+
+    <modules>
+        <module>dynamo-services-iam</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.shaw.commons</groupId>
+            <artifactId>dynamo-commons-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-ui</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+    </dependencies>
+</project>
