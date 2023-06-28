@@ -42,17 +42,20 @@ public class LonginType extends BaseDomain implements EntityBaseFunction<LoginTy
 	private Long timeout;
 
 	/** 是否需要验证码 */
-	private boolean captcha;
+	@Column(columnDefinition = "int default 0")
+	private int captcha;
 
 	/** 是否系统内置 */
-	@Column(name = "`system`")
-	private boolean system;
+	@Column(columnDefinition = "int default 0")
+	private int isSystem;
 
 	/** 密码错误几次冻结 -1表示不限制 */
-	private Integer pwdErrNum;
+	@Column(columnDefinition = "int default 0")
+	private int pwdErrNum;
 
 	/** 是否可用 */
-	private boolean enable;
+	@Column(columnDefinition = "int default 0")
+	private int enable;
 
 	/** 描述 */
 	private String description;

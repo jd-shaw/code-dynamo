@@ -28,7 +28,7 @@ public class AuthClient {
 	private long timeout;
 
 	/** 是否可用 */
-	private boolean enable;
+	private int enable;
 
 	/** 关联登录方式Id */
 	private List<String> loginTypeIds;

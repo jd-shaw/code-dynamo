@@ -10,10 +10,10 @@ spring:
       # 300 分钟, 连接最大存活时间
       max-lifetime: 18000000
   jpa:
-    show-sql: true
+    show-sql: false
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/code-dynamo?serverTimezone=GMT%2B8&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&nullCatalogMeansCurrent=true

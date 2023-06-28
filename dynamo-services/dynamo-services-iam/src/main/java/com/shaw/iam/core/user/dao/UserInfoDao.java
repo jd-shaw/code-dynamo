@@ -1,10 +1,9 @@
 package com.shaw.iam.core.user.dao;
 
-import com.shaw.iam.dto.user.UserInfoDto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.shaw.iam.core.user.entity.UserInfo;
-import org.springframework.stereotype.Repository;
 
 /**
  * 用户信息
@@ -21,4 +20,15 @@ public interface UserInfoDao extends JpaRepository<UserInfo, String> {
 
 	UserInfo findByUsername(String username);
 
+	boolean existsByUsername(String username);
+
+	boolean existsByEmail(String email);
+
+	boolean existsByPhone(String phone);
+
+	boolean existsByUsernameAndIdNot(String username, String id);
+
+	boolean existsByEmailAndIdNot(String email, String id);
+
+	boolean existsByPhoneAndIdNot(String phone, String id);
 }

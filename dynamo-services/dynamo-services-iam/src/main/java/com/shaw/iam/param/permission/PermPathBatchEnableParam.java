@@ -20,7 +20,7 @@ public class PermPathBatchEnableParam {
 
     @NotEmpty
     @Schema(description = "权限码集合")
-    private List<Long> permPathIds;
+    private List<String> permPathIds;
 
     @Schema(description = "是否启用")
     private boolean enable;

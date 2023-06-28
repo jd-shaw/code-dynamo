@@ -36,7 +36,7 @@ public interface PermMenuService {
 
 	boolean existsByPermCode(String permCode);
 
-	boolean existsByPermCode(String permCode, String id);
+	boolean existsByPermCodeAndIdNot(String permCode, String id);
 
 	List<PermMenuDto> findAllTree(String clientCode);
 

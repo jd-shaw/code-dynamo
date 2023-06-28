@@ -2,8 +2,7 @@ package com.shaw.iam.core.client.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-
+import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.iam.dto.client.ClientDto;
 import com.shaw.iam.param.client.ClientParam;
@@ -28,8 +27,8 @@ public interface ClientService {
 
 	boolean existsByCode(String code);
 
-	boolean existsByCode(String code, String id);
+	boolean existsByCodeAndIdNot(String code, String id);
 
-	Page<ClientDto> page(PageParam pageParam, ClientParam clientParam);
+	PageResult<ClientDto> page(PageParam pageParam, ClientParam clientParam);
 
 }

@@ -59,4 +59,9 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 	public void deleteByPermissionId(String permissionId) {
 		getRoleMenuDao().deleteByPermissionId(permissionId);
 	}
+
+	@Override
+	public void deleteByRoleId(String roleId) {
+		getRoleMenuDao().deleteByRoleId(roleId);
+	}
 }

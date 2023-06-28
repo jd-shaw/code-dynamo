@@ -1,10 +1,12 @@
 package com.shaw.iam.param.client;
 
+import java.util.List;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.List;
+import javax.persistence.Column;
 
 /**
  * 认证应用
@@ -27,10 +29,12 @@ public class ClientParam {
 	private String name;
 
 	@Schema(description = "是否系统内置")
-	private Boolean system;
+	@Column(columnDefinition = "int default 0")
+	private int isSystem;
 
 	@Schema(description = "是否可用")
-	private Boolean enable;
+	@Column(columnDefinition = "int default 0")
+	private int enable;
 
 	@Schema(description = "关联终端")
 	private List<String> loginTypeIdList;

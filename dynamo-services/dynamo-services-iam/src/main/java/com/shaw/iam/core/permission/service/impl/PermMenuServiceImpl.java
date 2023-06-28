@@ -174,8 +174,8 @@ public class PermMenuServiceImpl implements PermMenuService {
 	 * 权限编码是否被使用
 	 */
 	@Override
-	public boolean existsByPermCode(String permCode, String id) {
-		return permMenuDao.existsByPermCodeAndId(permCode, id);
+	public boolean existsByPermCodeAndIdNot(String permCode, String id) {
+		return permMenuDao.existsByPermCodeAndIdNot(permCode, id);
 	}
 
 	//

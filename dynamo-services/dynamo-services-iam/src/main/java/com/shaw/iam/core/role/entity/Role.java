@@ -8,6 +8,7 @@ import com.shaw.iam.core.role.convert.RoleConvert;
 import com.shaw.iam.dto.role.RoleDto;
 import com.shaw.iam.param.role.RoleParam;
 import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.utils.RandomUIDUtils;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,7 +40,9 @@ public class Role extends BaseDomain implements EntityBaseFunction<RoleDto> {
 	private String remark;
 
 	public static Role init(RoleParam in) {
-		return RoleConvert.CONVERT.convert(in);
+		Role role = RoleConvert.CONVERT.convert(in);
+		role.setId(RandomUIDUtils.getUID());
+		return role;
 	}
 
 	@Override

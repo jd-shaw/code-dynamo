@@ -31,10 +31,10 @@ public class LoginTypeParam {
 	private String type;
 
 	@Schema(description = "是否可用")
-	private boolean enable;
+	private int enable;
 
 	@Schema(description = "是否启用验证码")
-	private boolean captcha;
+	private int captcha;
 
 	@Schema(description = "在线时长 分钟")
 	private Long timeout;

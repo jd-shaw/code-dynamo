@@ -82,7 +82,7 @@ public class PermMenuController {
 	@Operation(summary = "编码是否被使用(不包含自己)")
 	@GetMapping("/exists-by-perm-code-not-id")
 	public ResResult<Boolean> existsByPermCode(String permCode, String id) {
-		return Res.ok(getPermissionService().existsByPermCode(permCode, id));
+		return Res.ok(getPermissionService().existsByPermCodeAndIdNot(permCode, id));
 	}
 
 }

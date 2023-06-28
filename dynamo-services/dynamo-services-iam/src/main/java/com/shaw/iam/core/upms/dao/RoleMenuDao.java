@@ -23,4 +23,6 @@ public interface RoleMenuDao extends JpaRepository<RoleMenu, String> {
 	void deleteByPermissionId(String permissionId);
 
 	void deleteByIdIn(List<String> ids);
+
+	void deleteByRoleId(String roleId);
 }

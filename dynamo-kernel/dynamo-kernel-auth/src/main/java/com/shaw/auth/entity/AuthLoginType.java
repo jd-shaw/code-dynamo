@@ -26,7 +26,7 @@ public class AuthLoginType {
 	private long timeout;
 
 	/** 是否可用 */
-	private boolean enable;
+	private int enable;
 
 	/** 密码错误几次冻结 */
 	private int pwdErrNum;

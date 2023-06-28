@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 public class RoleParam {
 
     @Schema(description = "角色id")
-    private Long id;
+    private String id;
 
     @Schema(description = "角色code")
     private String code;

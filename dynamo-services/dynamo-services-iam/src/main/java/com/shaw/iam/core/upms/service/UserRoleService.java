@@ -31,4 +31,5 @@ public interface UserRoleService {
 
     List<String >findRoleIdsByUserId(String userId);
 
+    boolean existsByRoleId(String roleId);
 }

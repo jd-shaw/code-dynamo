@@ -20,4 +20,7 @@ public interface RoleMenuService {
 	void deleteByPermissionId(String permissionId);
 
 	void deleteByIds(List<String> ids);
+
+	void deleteByRoleId(String roleId);
+
 }

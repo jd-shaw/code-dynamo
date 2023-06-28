@@ -20,7 +20,7 @@ public interface PermMenuDao extends JpaRepository<PermMenu, String> {
 
 	boolean existsByPermCode(String permCode);
 
-	boolean existsByPermCodeAndId(String permCode, String id);
+	boolean existsByPermCodeAndIdNot(String permCode, String id);
 
 	boolean existsByParentId(String parentId);
 

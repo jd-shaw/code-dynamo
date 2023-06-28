@@ -37,7 +37,7 @@ public class LoginTypeService {
 			throw new BaseException("终端编码不得重复");
 		}
 		LonginType longinType = LonginType.init(param);
-		longinType.setSystem(false);
+		longinType.setIsSystem(0);
 		return loginTypeDao.save(longinType).toDto();
 	}
 
@@ -49,8 +49,8 @@ public class LoginTypeService {
 		if (loginTypeDao.existsByCodeAndId(param.getCode(), longinType.getId())) {
 			throw new BaseException("终端编码不得重复");
 		}
-		if (longinType.isSystem()) {
-			longinType.setEnable(true);
+		if (longinType.getIsSystem() == 1) {
+			longinType.setEnable(longinType.getIsSystem());
 		}
 		BeanUtils.copyProperties(param, longinType);
 		return loginTypeDao.save(longinType).toDto();
@@ -96,7 +96,7 @@ public class LoginTypeService {
 	 */
 	public void delete(String id) {
 		LonginType longinType = loginTypeDao.findById(id).orElseThrow(DataNotExistException::new);
-		if (longinType.isSystem()) {
+		if (longinType.getIsSystem() == 1) {
 			throw new BaseException("系统内置终端，不可删除");
 		}
 		loginTypeDao.deleteById(id);

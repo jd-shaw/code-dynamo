@@ -14,4 +14,7 @@ import com.shaw.iam.core.upms.entity.RolePath;
 @Repository
 public interface RolePathDao extends JpaRepository<RolePath, String> {
 
+	void deleteByRoleId(String roleId);
+
+	void deleteByPermissionId(String permissionId);
 }

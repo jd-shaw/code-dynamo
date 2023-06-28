@@ -14,9 +14,9 @@ public interface DataScopeDao extends JpaRepository<DataScope, String> {
 
 	public boolean existsByCode(String code);
 
-	public boolean existsByCodeAndId(String code, String id);
+	public boolean existsByCodeAndIdNot(String code, String id);
 
 	public boolean existsByName(String name);
 
-	public boolean existsByNameAndId(String name, String id);
+	public boolean existsByNameAndIdNot(String name, String id);
 }

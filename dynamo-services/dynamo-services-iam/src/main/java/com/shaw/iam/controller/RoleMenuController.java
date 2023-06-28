@@ -49,7 +49,7 @@ public class RoleMenuController {
 
 	@Operation(summary = "根据角色id获取关联权限id集合(包含资源和菜单)")
 	@GetMapping("/find-permission-ids-by-role")
-	public ResResult<List<Long>> findPermissionIdsByRole(Long roleId, String clientCode) {
+	public ResResult<List<String>> findPermissionIdsByRole(Long roleId, String clientCode) {
 		return Res.ok();
 	}
 

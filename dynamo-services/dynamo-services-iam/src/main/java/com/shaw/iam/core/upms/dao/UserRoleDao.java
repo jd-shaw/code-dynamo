@@ -18,4 +18,5 @@ public interface UserRoleDao extends JpaRepository<UserRole, String> {
 
 	List<UserRole> findListByUserId(String userId);
 
+	boolean existsByRoleId(String roleId);
 }

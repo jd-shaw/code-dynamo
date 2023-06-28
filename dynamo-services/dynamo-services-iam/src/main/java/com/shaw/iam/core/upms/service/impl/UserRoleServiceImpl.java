@@ -21,12 +21,14 @@ import com.shaw.iam.core.upms.service.UserRoleService;
 import com.shaw.iam.core.user.dao.UserInfoDao;
 import com.shaw.iam.core.user.entity.UserInfo;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
  * @author xjd
  * @date 2023/6/27
  */
+@Getter
 @Service
 @RequiredArgsConstructor
 public class UserRoleServiceImpl implements UserRoleService {
@@ -98,4 +100,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public boolean existsByRoleId(String roleId) {
+		return getUserroleDao().existsByRoleId(roleId);
+	}
 }

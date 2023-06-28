@@ -41,11 +41,12 @@ public class Client extends BaseDomain implements EntityBaseFunction<ClientDto> 
 	private String name;
 
 	/** 是否系统内置 */
-	@Column(name = "`system`")
-	private boolean system;
+	@Column(columnDefinition = "int default 0")
+	private int isSystem;
 
 	/** 是否可用 */
-	private boolean enable;
+	@Column(columnDefinition = "int default 0")
+	private int enable;
 
 	/** 关联登录方式 */
 	private String loginTypeIds;

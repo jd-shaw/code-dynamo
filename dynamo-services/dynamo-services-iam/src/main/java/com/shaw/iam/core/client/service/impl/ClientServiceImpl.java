@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.shaw.commons.exception.DataNotExistException;
+import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.commons.utils.ResultConvertUtil;
 import com.shaw.iam.core.client.dao.ClientDao;
@@ -65,21 +66,27 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Page<ClientDto> page(PageParam pageParam, ClientParam clientParam) {
-		Specification<ClientDto> specification = new Specification<ClientDto>() {
+	public PageResult<ClientDto> page(PageParam pageParam, ClientParam clientParam) {
+		Specification<Client> specification = new Specification<Client>() {
 			@Override
-			public Predicate toPredicate(Root<ClientDto> root, CriteriaQuery<?> criteriaQuery,
+			public Predicate toPredicate(Root<Client> root, CriteriaQuery<?> criteriaQuery,
 					CriteriaBuilder criteriaBuilder) {
 				List<Predicate> predicateList = new ArrayList<>();
 				if (StringUtils.hasLength(clientParam.getCode())) {
 					predicateList.add(
 							criteriaBuilder.like(root.get("code").as(String.class), "%" + clientParam.getCode() + "%"));
 				}
+				if (StringUtils.hasLength(clientParam.getName())) {
+					predicateList.add(
+							criteriaBuilder.like(root.get("name").as(String.class), "%" + clientParam.getName() + "%"));
+				}
 				return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
 			}
 		};
 		Pageable pageable = PageRequest.of(pageParam.start(), pageParam.getSize());
-		return clientDao.findAll(specification, pageable);
+		Page<Client> page = clientDao.findAll(specification, pageable);
+		return new PageResult<ClientDto>().setSize(page.getSize()).setCurrent(page.getNumber())
+				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
 	}
 
 	/**
@@ -118,8 +125,8 @@ public class ClientServiceImpl implements ClientService {
 	 * 编码是否已经存在(不包含自身)
 	 */
 	@Override
-	public boolean existsByCode(String code, String id) {
-		return clientDao.existsByCodeAndId(code, id);
+	public boolean existsByCodeAndIdNot(String code, String id) {
+		return clientDao.existsByCodeAndIdNot(code, id);
 	}
 
 }
