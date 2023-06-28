@@ -1,12 +1,11 @@
 package com.shaw.iam.core.permission.convert;
 
-import java.util.List;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import com.shaw.iam.core.upms.entity.RoleMenu;
 import com.shaw.iam.dto.upms.RoleMenuDto;
+import com.shaw.iam.param.upms.RoleMenuParam;
 
 /**
  * @author xjd
@@ -19,8 +18,8 @@ public interface RoleMenuConvert {
 
 	RoleMenu convert(RoleMenuDto in);
 
-	RoleMenuDto convert(RoleMenu in);
+	RoleMenu convert(RoleMenuParam in);
 
-	List<RoleMenuDto> convert(List<RoleMenu> in);
+	RoleMenuDto convert(RoleMenu in);
 
 }

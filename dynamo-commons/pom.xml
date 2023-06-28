@@ -17,6 +17,7 @@
         <module>dynamo-commons-utils</module>
         <module>dynamo-commons-swagger</module>
         <module>dynamo-commons-redis</module>
+        <module>dynamo-commons-jackson</module>
     </modules>
 
     <dependencyManagement>

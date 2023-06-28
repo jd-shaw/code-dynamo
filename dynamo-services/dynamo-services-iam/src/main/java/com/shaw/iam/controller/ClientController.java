@@ -2,9 +2,9 @@ package com.shaw.iam.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.Res;
 import com.shaw.commons.rest.ResResult;
 import com.shaw.commons.rest.param.PageParam;
@@ -65,8 +65,8 @@ public class ClientController {
 
 	@Operation(summary = "分页查询")
 	@GetMapping(value = "/page")
-	public ResResult<PageResult<ClientDto>> page(PageParam pageParam, ClientParam clientParam) {
-		return Res.ok();
+	public ResResult<Page<ClientDto>> page(PageParam pageParam, ClientParam clientParam) {
+		return Res.ok(clientService.page(pageParam, clientParam));
 	}
 
 	@Operation(summary = "编码是否被使用")
@@ -77,7 +77,7 @@ public class ClientController {
 
 	@Operation(summary = "编码是否被使用(不包含自己)")
 	@GetMapping("/exists-by-code-not-id")
-	public ResResult<Boolean> existsByCode(String code, Long id) {
+	public ResResult<Boolean> existsByCode(String code, String id) {
 		return Res.ok(clientService.existsByCode(code, id));
 	}
 

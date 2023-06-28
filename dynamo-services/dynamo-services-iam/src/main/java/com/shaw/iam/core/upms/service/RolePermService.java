@@ -1,10 +1,6 @@
 package com.shaw.iam.core.upms.service;
 
-import com.shaw.iam.dto.upms.MenuAndResourceDto;
-import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 /**
  * 角色权限菜单关系
@@ -14,6 +10,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 public interface RolePermService {
 
-    MenuAndResourceDto getPermissions(String clientCode);
+	void save(String roleId, String clientCode, List<String> permissionIds);
 
+	List<String> findPermissionIdsByRole(String roleId, String clientCode);
+
+	List<String> findMenuIds(String clientCode);
+
+	List<String> findEffectPermCodesByUserId(String userId);
 }

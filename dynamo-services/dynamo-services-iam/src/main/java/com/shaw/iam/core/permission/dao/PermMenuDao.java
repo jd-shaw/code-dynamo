@@ -18,4 +18,12 @@ public interface PermMenuDao extends JpaRepository<PermMenu, String> {
 
 	List<PermMenu> findListByClientCode(String clientCode);
 
+	boolean existsByPermCode(String permCode);
+
+	boolean existsByPermCodeAndId(String permCode, String id);
+
+	boolean existsByParentId(String parentId);
+
+	List<PermMenu> findByParentId(String parentId);
+
 }

@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.shaw.commons.function.EntityBaseFunction;
+import com.shaw.iam.core.permission.convert.PermConvert;
 import com.shaw.iam.core.permission.convert.RoleMenuConvert;
+import com.shaw.iam.core.permission.entity.PermMenu;
 import com.shaw.iam.dto.upms.RoleMenuDto;
+import com.shaw.iam.param.permission.PermMenuParam;
+import com.shaw.iam.param.upms.RoleMenuParam;
 import com.shaw.mysql.jpa.po.BaseDomain;
 
 import lombok.Data;
@@ -42,10 +46,21 @@ public class RoleMenu extends BaseDomain implements EntityBaseFunction<RoleMenuD
 	 */
 	private String permissionId;
 
+	public RoleMenu(String id, String roleId, String clientCode, String permissionId) {
+		super(id, null);
+		this.roleId = roleId;
+		this.clientCode = clientCode;
+		this.permissionId = permissionId;
+	}
+
 	public RoleMenu(String roleId, String clientCode, String permissionId) {
 		this.roleId = roleId;
 		this.clientCode = clientCode;
 		this.permissionId = permissionId;
+	}
+
+	public static RoleMenu init(RoleMenuParam in) {
+		return RoleMenuConvert.CONVERT.convert(in);
 	}
 
 	@Override
