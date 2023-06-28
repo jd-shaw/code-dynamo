@@ -3,6 +3,9 @@ package com.shaw.iam.core.upms.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.shaw.commons.function.EntityBaseFunction;
+import com.shaw.iam.core.permission.convert.RoleMenuConvert;
+import com.shaw.iam.dto.upms.RoleMenuDto;
 import com.shaw.mysql.jpa.po.BaseDomain;
 
 import lombok.Data;
@@ -22,7 +25,7 @@ import lombok.experimental.Accessors;
 @Entity
 @Table(name = "iam_role_menu")
 @NoArgsConstructor
-public class RoleMenu extends BaseDomain {
+public class RoleMenu extends BaseDomain implements EntityBaseFunction<RoleMenuDto> {
 
 	/**
 	 * 角色id
@@ -45,4 +48,8 @@ public class RoleMenu extends BaseDomain {
 		this.permissionId = permissionId;
 	}
 
+	@Override
+	public RoleMenuDto toDto() {
+		return RoleMenuConvert.CONVERT.convert(this);
+	}
 }

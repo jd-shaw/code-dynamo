@@ -29,17 +29,17 @@ public class PermMenuController {
 
 	private final RolePermService rolePermissionService;
 
-	@Operation(summary = "添加菜单权限")
-	@PostMapping("/add")
-	public ResResult<PermMenuDto> add(@RequestBody PermMenuParam param) {
-		return Res.ok(permissionService.add(param));
-	}
+//	@Operation(summary = "添加菜单权限")
+//	@PostMapping("/add")
+//	public ResResult<PermMenuDto> add(@RequestBody PermMenuParam param) {
+//		return Res.ok(permissionService.add(param));
+//	}
 
-	@Operation(summary = "修改菜单权限")
-	@PostMapping("/update")
-	public ResResult<PermMenuDto> update(@RequestBody PermMenuParam param) {
-		return Res.ok(permissionService.update(param));
-	}
+//	@Operation(summary = "修改菜单权限")
+//	@PostMapping("/update")
+//	public ResResult<PermMenuDto> update(@RequestBody PermMenuParam param) {
+//		return Res.ok(permissionService.update(param));
+//	}
 
 	@Operation(summary = "获取菜单树")
 	@GetMapping("/menuTree")

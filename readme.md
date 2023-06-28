@@ -23,3 +23,14 @@ java.lang.ClassNotFoundException: com.fasterxml.jackson.core.StreamReadConstrain
 	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
 ```
+
+2. 出现 `Not a managed type: class com.shaw.file.entity.UpdateFileInfo` 错误
+需要在启动项加上注解
+```java
+@EntityScan
+@EnableJpaRepositories
+```
+同时在entity上增加注解
+```java
+@Entity
+```

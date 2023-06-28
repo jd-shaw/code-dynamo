@@ -3,6 +3,7 @@ package com.shaw.iam.controller;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.shaw.iam.core.user.service.UserInfoService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,8 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/user")
 @AllArgsConstructor
 public class UserInfoController {
+
+	private final UserInfoService userInfoService;
 
 	@Operation(summary = "账号是否被使用")
 	@GetMapping("/existsUsername")
@@ -151,7 +154,7 @@ public class UserInfoController {
 	@Operation(summary = "登录后获取用户信息")
 	@GetMapping("/getLoginAfterUserInfo")
 	public ResResult<LoginAfterUserInfo> getLoginAfterUserInfo() {
-		return Res.ok();
+		return Res.ok(userInfoService.getLoginAfterUserInfo());
 	}
 
 }

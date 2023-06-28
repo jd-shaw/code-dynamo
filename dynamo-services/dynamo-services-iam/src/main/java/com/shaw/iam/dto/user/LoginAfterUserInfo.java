@@ -15,16 +15,16 @@ import lombok.experimental.Accessors;
 @Schema(title = "用户登录后所需的基础信息信息")
 public class LoginAfterUserInfo {
 
-    @Schema(description = "用户id")
-    private Long userId;
+	@Schema(description = "用户id")
+	private String userId;
 
-    @Schema(description = "名称")
-    private String name;
+	@Schema(description = "名称")
+	private String name;
 
-    @Schema(description = "账号")
-    private String username;
+	@Schema(description = "账号")
+	private String username;
 
-    @Schema(description = "头像")
-    private String avatar;
+	@Schema(description = "头像")
+	private String avatar;
 
 }

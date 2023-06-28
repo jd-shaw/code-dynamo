@@ -15,6 +15,7 @@
 
     <modules>
         <module>dynamo-services-iam</module>
+        <module>dynamo-services-file</module>
     </modules>
 
     <dependencies>

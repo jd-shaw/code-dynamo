@@ -1,9 +1,12 @@
 package com.shaw.iam.core.upms.dao;
 
+import java.util.List;
+
+import com.shaw.iam.dto.upms.RoleMenuDto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.shaw.iam.core.upms.entity.RoleMenu;
-import org.springframework.stereotype.Repository;
 
 /**
  * 角色权限关系
@@ -14,4 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RoleMenuDao extends JpaRepository<RoleMenu, String> {
 
+	List<RoleMenu> findListByRoleIdAndClientCode(String roleId, String clientCode);
+
+	List<RoleMenu> findByRoleIdIn(List<String> roleIds);
 }

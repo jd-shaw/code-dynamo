@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.shaw.iam.core.upms.entity.UserRole;
 
+import java.util.List;
+
 /**
  * 用户角色关系
  *
@@ -13,5 +15,7 @@ import com.shaw.iam.core.upms.entity.UserRole;
  */
 @Repository
 public interface UserRoleDao extends JpaRepository<UserRole, String> {
+
+	List<UserRole> findListByUserId(String userId);
 
 }

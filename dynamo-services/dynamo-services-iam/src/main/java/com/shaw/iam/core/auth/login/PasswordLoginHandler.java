@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 
+import com.shaw.iam.core.user.service.UserInfoService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -48,6 +49,7 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 	private final String CAPTCHA_KEY_PARAMETER = "captchaKey";
 
 	private final PasswordEncoder passwordEncoder;
+	private final UserInfoService userService;
 
 	/**
 	 * 认证前置操作, 默认处理验证码
@@ -111,16 +113,16 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 	public UserDetail loadUserByUsername(String username) throws UserNotFoundException {
 		UserInfoDto userInfoDto = null;
 		// 1. 获取账号密码
-		//		if (RegexUtil.isEmailPattern(username)) {
-		//			// 根据 Email 获取用户信息
-		//			userInfoDto = userQueryService.findByEmail(username);
-		//		} else if (RegexUtil.isPhonePattern(username)) {
-		//			// 根据 手机号 获取用户信息
-		//			userInfoDto = userQueryService.findByPhone(username);
-		//		} else {
-		//			// 根据 账号 获取账户信息
-		//			userInfoDto = userQueryService.findByAccount(username);
-		//		}
+				if (RegexUtil.isEmailPattern(username)) {
+					// 根据 Email 获取用户信息
+					userInfoDto = userService.findByEmail(username);
+				} else if (RegexUtil.isPhonePattern(username)) {
+					// 根据 手机号 获取用户信息
+					userInfoDto = userService.findByPhone(username);
+				} else {
+					// 根据 账号 获取账户信息
+					userInfoDto = userService.findByAccount(username);
+				}
 		if (Objects.isNull(userInfoDto)) {
 			throw new UserNotFoundException(username);
 		}

@@ -53,7 +53,7 @@ public class RoleMenuController {
 	@Operation(summary = "获取菜单和资源权限")
 	@GetMapping("/getPermissions")
 	public ResResult<MenuAndResourceDto> getPermissions(String clientCode) {
-		return Res.ok();
+		return Res.ok(rolePermService.getPermissions(clientCode));
 	}
 
 }

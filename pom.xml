@@ -25,6 +25,7 @@
     <properties>
         <dynamo.datasource.mysql.version>1.0.0</dynamo.datasource.mysql.version>
         <dynamo.service.iam.version>1.0.0</dynamo.service.iam.version>
+        <dynamo.service.file.version>1.0.0</dynamo.service.file.version>
         <dynamo.commons.swagger.version>1.0.0</dynamo.commons.swagger.version>
         <dynamo.commons.utils.version>1.0.0</dynamo.commons.utils.version>
         <dynamo.commons.redis.version>1.0.0</dynamo.commons.redis.version>
@@ -82,6 +83,11 @@
                 <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-iam</artifactId>
                 <version>${dynamo.service.iam.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shaw.services</groupId>
+                <artifactId>dynamo-services-file</artifactId>
+                <version>${dynamo.service.file.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shaw.kernel</groupId>
