@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/06/20
  */
 public class DatePattern {

@@ -6,7 +6,7 @@ import com.shaw.iam.core.user.entity.UserExpandInfo;
 import com.shaw.iam.dto.user.UserExpandInfoDto;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/06/20
  */
 public interface UserExpandInfoService {

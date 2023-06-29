@@ -9,7 +9,7 @@ import com.shaw.sys.core.entity.DictionaryItem;
 import com.shaw.sys.core.param.DictionaryItemParam;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/06/28
  */
 @Mapper

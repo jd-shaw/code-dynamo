@@ -1,7 +1,7 @@
 package com.shaw.commons.exception;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/06/20
  */
 public class ServiceException extends BaseException {

@@ -6,7 +6,7 @@ import com.shaw.iam.core.scope.entity.DataScopeDept;
 import com.shaw.iam.dto.scope.DataScopeDeptDto;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/6/28
  */
 public interface DataScopeDeptService {

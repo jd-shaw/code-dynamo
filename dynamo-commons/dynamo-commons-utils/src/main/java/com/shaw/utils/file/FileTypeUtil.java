@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import com.shaw.utils.text.StringUtils;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/6/27
  */
 public class FileTypeUtil {

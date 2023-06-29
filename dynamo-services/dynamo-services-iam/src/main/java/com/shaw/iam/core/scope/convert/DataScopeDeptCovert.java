@@ -8,7 +8,7 @@ import com.shaw.iam.dto.scope.DataScopeDeptDto;
 import com.shaw.iam.param.scope.DataScopeDeptParam;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/6/28
  */
 @Mapper

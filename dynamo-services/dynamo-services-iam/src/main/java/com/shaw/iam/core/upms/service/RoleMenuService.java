@@ -6,7 +6,7 @@ import com.shaw.iam.dto.upms.RoleMenuDto;
 import com.shaw.iam.param.upms.RoleMenuParam;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/6/27
  */
 public interface RoleMenuService {

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/06/20
  */
 public interface UserInfoService {
