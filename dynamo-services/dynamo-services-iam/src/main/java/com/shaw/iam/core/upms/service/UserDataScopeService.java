@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
  * @author shaw
  * @date 2023/06/20
  */
-@Slf4j
-@Service
-@RequiredArgsConstructor
-public class UserDataScopeService {
+public interface UserDataScopeService {
 
+	boolean existsByDataScopeId(String dataScopeId);
+
+	void deleteByDataScopeId(String dataScopeId);
 }

@@ -12,4 +12,7 @@ import com.shaw.iam.core.upms.entity.UserDataScope;
 @Repository
 public interface UserDataScopeDao extends JpaRepository<UserDataScope, String> {
 
+	boolean existsByDataScopeId(String dataScopeId);
+
+	void deleteByDataScopeId(String dataScopeId);
 }

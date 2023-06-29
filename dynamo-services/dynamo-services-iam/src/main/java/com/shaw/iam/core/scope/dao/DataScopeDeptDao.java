@@ -16,6 +16,8 @@ public interface DataScopeDeptDao extends JpaRepository<DataScopeDept, String> {
 
 	void deleteByDataScopeId(String dataScopeId);
 
+	void deleteByDeptIdIn(List<String> deptIds);
+
 	/**
 	 * 根据部门进行删除
 	 */

@@ -3,6 +3,10 @@ package com.shaw.iam.core.scope.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.shaw.commons.function.EntityBaseFunction;
+import com.shaw.iam.core.scope.convert.DataScopeDeptCovert;
+import com.shaw.iam.dto.scope.DataScopeDeptDto;
+import com.shaw.iam.dto.scope.DataScopeDto;
 import com.shaw.mysql.jpa.po.BaseDomain;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +28,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Entity
 @Table(name = "iam_data_scope_dept")
-public class DataScopeDept extends BaseDomain {
+public class DataScopeDept extends BaseDomain  implements EntityBaseFunction<DataScopeDeptDto> {
 
 	/** 数据范围id */
 	private String dataScopeId;
@@ -32,4 +36,8 @@ public class DataScopeDept extends BaseDomain {
 	/** 部门id */
 	private String deptId;
 
+	@Override
+	public DataScopeDeptDto toDto() {
+		return DataScopeDeptCovert.CONVERT.convert(this);
+	}
 }

@@ -6,6 +6,8 @@ import com.shaw.iam.param.user.UserInfoParam;
 import com.shaw.iam.param.user.UserRegisterParam;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author xjd
  * @date 2023/06/20
@@ -37,4 +39,6 @@ public interface UserInfoService {
 	boolean existsByEmailAndIdNot(String email, String id);
 
 	boolean existsByPhoneAndIdNot(String phone, String id);
+
+	List<UserInfoDto> findByIds(List<String> ids);
 }

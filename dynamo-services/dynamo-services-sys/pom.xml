@@ -22,6 +22,36 @@
             <groupId>com.shaw.kernel</groupId>
             <artifactId>dynamo-kernel-commons</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.shaw.commons</groupId>
+            <artifactId>dynamo-commons-redis</artifactId>
+        </dependency>
+
+        <!-- lombok 配合 mapstruct -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+        </dependency>
+
+        <!-- 类型转换处理器 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+
+        <!-- 类型转换 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+        <!--数学验证码-->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

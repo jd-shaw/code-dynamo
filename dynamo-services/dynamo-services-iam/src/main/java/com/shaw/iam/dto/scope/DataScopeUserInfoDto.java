@@ -15,16 +15,16 @@ import lombok.experimental.Accessors;
 @Schema(title = "用户数据范围权限详细信息")
 public class DataScopeUserInfoDto {
 
-    @Schema(description = "权限关联id")
-    private Long id;
+	@Schema(description = "权限关联id")
+	private String id;
 
-    @Schema(description = "用户id")
-    private Long userId;
+	@Schema(description = "用户id")
+	private String userId;
 
-    @Schema(description = "用户名称")
-    private String name;
+	@Schema(description = "用户名称")
+	private String name;
 
-    @Schema(description = "用户账号")
-    private String username;
+	@Schema(description = "用户账号")
+	private String username;
 
 }

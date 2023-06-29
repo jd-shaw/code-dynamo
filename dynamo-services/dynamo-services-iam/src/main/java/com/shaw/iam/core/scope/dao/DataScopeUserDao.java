@@ -17,4 +17,5 @@ public interface DataScopeUserDao extends JpaRepository<DataScopeUser, String> {
 	public void deleteByDataScopeId(String dataScopeId);
 
 	public List<DataScopeUser> findByDataScopeId(String dataScopeId);
+
 }

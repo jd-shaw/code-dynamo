@@ -16,9 +16,9 @@ import java.util.List;
 public class DataScopeDeptParam {
 
     @Schema(description = "数据权限id")
-    private Long dataScopeId;
+    private String dataScopeId;
 
     @Schema(description = "部门id集合")
-    private List<Long> deptIds;
+    private List<String> deptIds;
 
 }

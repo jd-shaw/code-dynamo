@@ -15,10 +15,10 @@ import java.util.List;
 @Schema(title = "部门范围")
 public class DataScopeUserParam {
 
-    @Schema(description = "数据权限id")
-    private Long dataScopeId;
+	@Schema(description = "数据权限id")
+	private String dataScopeId;
 
-    @Schema(description = "用户id")
-    private List<Long> userIds;
+	@Schema(description = "用户id")
+	private List<String> userIds;
 
 }

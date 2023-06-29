@@ -47,6 +47,10 @@ dynamo:
           - com.shaw.iam
         "[认证与权限]":
           - com.shaw.auth
+        "[文件管理]":
+          - com.shaw.file
+        "[参数与数据字典]":
+          - com.shaw.sys
     # 认证
   starter:
     auth:

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.shaw.commons.utils.ResultConvertUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -157,5 +158,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public boolean existsByPhoneAndIdNot(String phone, String id) {
 		return getUserInfoDao().existsByPhoneAndIdNot(phone, id);
+	}
+
+	@Override
+	public List<UserInfoDto> findByIds(List<String> ids) {
+		return ResultConvertUtil.dtoListConvert(getUserInfoDao().findAllById(ids));
 	}
 }

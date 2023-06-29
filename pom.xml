@@ -26,6 +26,7 @@
         <dynamo.datasource.mysql.version>1.0.0</dynamo.datasource.mysql.version>
         <dynamo.service.iam.version>1.0.0</dynamo.service.iam.version>
         <dynamo.service.file.version>1.0.0</dynamo.service.file.version>
+        <dynamo.service.dataperm.version>1.0.0</dynamo.service.dataperm.version>
         <dynamo.service.api.version>1.0.0</dynamo.service.api.version>
         <dynamo.service.sys.version>1.0.0</dynamo.service.sys.version>
         <dynamo.commons.swagger.version>1.0.0</dynamo.commons.swagger.version>
@@ -51,6 +52,7 @@
         <spring.checkstyle.version>0.0.38</spring.checkstyle.version>
         <redisson.version>3.21.1</redisson.version>
         <knife4j.version>4.0.0</knife4j.version>
+        <easy-captcha.version>1.6.2</easy-captcha.version>
 
     </properties>
 
@@ -90,6 +92,11 @@
                 <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-file</artifactId>
                 <version>${dynamo.service.file.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shaw.services</groupId>
+                <artifactId>dynamo-services-dataperm</artifactId>
+                <version>${dynamo.service.dataperm.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shaw</groupId>
