@@ -32,7 +32,7 @@ public class CaptchaController {
 
 	@IgnoreAuth
 	@Operation(summary = "获取图片验证码")
-	@PostMapping("/imgCaptcha")
+	@PostMapping("/img-captcha")
 	public ResResult<CaptchaDataResult> imgCaptcha() {
 		return Res.ok(captchaService.imgCaptcha());
 	}
