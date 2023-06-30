@@ -1,21 +1,22 @@
 package com.shaw.iam.core.user.service.impl;
 
-import com.shaw.commons.utils.ResultConvertUtil;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.shaw.iam.core.dept.event.DeptDeleteEvent;
 import com.shaw.iam.core.dept.service.DeptService;
 import com.shaw.iam.core.user.dao.UserDeptDao;
 import com.shaw.iam.core.user.entity.UserDept;
 import com.shaw.iam.core.user.service.UserDeptService;
 import com.shaw.iam.dto.dept.DeptDto;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author shaw
@@ -70,7 +71,7 @@ public class UserDeptServiceImpl implements UserDeptService {
 	 * 查询用户所对应的部门
 	 */
 	public List<DeptDto> findDeptListByUser(String userId) {
-		return ResultConvertUtil.dtoListConvert(getDeptService().findByIds(this.findDeptIdsByUser(userId)));
+		return getDeptService().findByIds(this.findDeptIdsByUser(userId));
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class UserDeptServiceImpl implements UserDeptService {
 	 */
 	@EventListener
 	public void DeptDeleteEventListener(DeptDeleteEvent event) {
-		userDeptManager.deleteByDeptIds(event.getDeptIds());
+		getUserDeptDao().deleteByDeptIdIn(event.getDeptIds());
 	}
 
 	/**
