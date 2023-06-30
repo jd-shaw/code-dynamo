@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.sys.core.service.CaptchaService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -58,6 +59,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	private final UserExpandInfoService userExpandInfoService;
 	private final PasswordEncoder passwordEncoder;
 	private final ClientService clientService;
+	private final CaptchaService captchaService;
 
 	/**
 	 * 注册新用户
@@ -66,9 +68,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Transactional(rollbackFor = Exception.class)
 	public void register(UserRegisterParam param) {
 		// 验证
-		//        if (!captchaService.validateImgCaptcha(param.getCaptchaKey(), param.getCaptcha())) {
-		//            throw new BizException("验证码错误");
-		//        }
+		if (!getCaptchaService().validateImgCaptcha(param.getCaptchaKey(), param.getCaptcha())) {
+			throw new BaseException("验证码错误");
+		}
 		UserInfoParam userInfoParam = new UserInfoParam();
 		BeanUtils.copyProperties(param, userInfoParam);
 		userInfoParam.setName(param.getUsername());
