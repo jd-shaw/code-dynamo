@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -56,7 +57,7 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public void update(ClientParam param) {
 		Client client = clientDao.findById(param.getId()).orElseThrow(DataNotExistException::new);
-		BeanUtils.copyProperties(param, client);
+		BeanUtils.copyProperties(param, client, BeanUtilsBean.getNullPropertyNames(param));
 		if (CollectionUtils.isNotEmpty(param.getLoginTypeIdList())) {
 			client.setLoginTypeIds(String.join(",", param.getLoginTypeIdList()));
 		} else {

@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
@@ -57,7 +58,7 @@ public class PermPathServiceImpl implements PermPathService {
 	@CacheEvict(value = { CachingCode.USER_PATH, CachingCode.IGNORE_PATH }, allEntries = true)
 	public void update(PermPathParam param) {
 		PermPath permPath = getPermPathDao().findById(param.getId()).orElseThrow(() -> new BaseException("信息不存在"));
-		BeanUtils.copyProperties(param, permPath);
+		BeanUtils.copyProperties(param, permPath, BeanUtilsBean.getNullPropertyNames(param));
 		permPath.setGenerate(false);// 编辑过的信息不再作为系统生成的
 		getPermPathDao().save(permPath);
 	}

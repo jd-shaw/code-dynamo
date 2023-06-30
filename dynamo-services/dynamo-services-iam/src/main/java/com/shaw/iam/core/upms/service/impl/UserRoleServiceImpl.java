@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.shaw.commons.utils.ResultConvertUtil;
+import com.shaw.iam.dto.role.RoleDto;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
@@ -33,15 +35,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserRoleServiceImpl implements UserRoleService {
 
-	private final RoleDao roleDao;
-
 	private final UserInfoDao userInfoDao;
-
-	private final UserRoleDao userroleDao;
+	private final UserRoleDao userRoleDao;
 
 	@Override
 	public List<String> findRoleIdsByUserId(String userId) {
-		List<UserRole> userRoles = userroleDao.findListByUserId(userId);
+		List<UserRole> userRoles = getUserRoleDao().findListByUserId(userId);
 		if (CollectionUtils.isNotEmpty(userRoles)) {
 			return userRoles.stream().map(UserRole::getId).collect(Collectors.toList());
 		}
@@ -55,10 +54,10 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@CacheEvict(value = { USER_PATH, USER_PERM_CODE }, allEntries = true)
 	public void saveAssign(String userId, List<String> roleIds) {
 		// 先删除用户拥有的角色
-		userroleDao.deleteById(userId);
+		getUserRoleDao().deleteById(userId);
 		// 然后给用户添加角色
 		List<UserRole> userRoles = this.createUserRoles(userId, roleIds);
-		userroleDao.saveAll(userRoles);
+		getUserRoleDao().saveAll(userRoles);
 	}
 
 	/**
@@ -71,10 +70,10 @@ public class UserRoleServiceImpl implements UserRoleService {
 		if (userInfos.size() != userIds.size()) {
 			throw new BaseException("用户数据有问题");
 		}
-		userroleDao.deleteAllById(userIds);
+		getUserRoleDao().deleteAllById(userIds);
 		List<UserRole> userRoles = userIds.stream().map(userId -> this.createUserRoles(userId, roleIds))
 				.flatMap(Collection::stream).collect(Collectors.toList());
-		userroleDao.saveAll(userRoles);
+		getUserRoleDao().saveAll(userRoles);
 	}
 
 	/**
@@ -102,6 +101,6 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 	@Override
 	public boolean existsByRoleId(String roleId) {
-		return getUserroleDao().existsByRoleId(roleId);
+		return getUserRoleDao().existsByRoleId(roleId);
 	}
 }

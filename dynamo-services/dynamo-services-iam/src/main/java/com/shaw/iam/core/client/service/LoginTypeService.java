@@ -2,6 +2,7 @@ package com.shaw.iam.core.client.service;
 
 import java.util.List;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +53,7 @@ public class LoginTypeService {
 		if (longinType.getIsSystem() == 1) {
 			longinType.setEnable(longinType.getIsSystem());
 		}
-		BeanUtils.copyProperties(param, longinType);
+		BeanUtils.copyProperties(param, longinType, BeanUtilsBean.getNullPropertyNames(param));
 		return loginTypeDao.save(longinType).toDto();
 	}
 

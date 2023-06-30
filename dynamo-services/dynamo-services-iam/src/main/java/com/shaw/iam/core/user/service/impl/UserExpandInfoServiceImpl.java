@@ -1,19 +1,17 @@
 package com.shaw.iam.core.user.service.impl;
 
-import com.shaw.commons.exception.BaseException;
-import com.shaw.iam.core.user.entity.UserExpandInfo;
-import com.shaw.iam.exception.user.UserInfoNotExistsException;
-import lombok.Getter;
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
 
 import com.shaw.iam.core.user.dao.UserExpandInfoDao;
+import com.shaw.iam.core.user.entity.UserExpandInfo;
 import com.shaw.iam.core.user.service.UserExpandInfoService;
 import com.shaw.iam.dto.user.UserExpandInfoDto;
+import com.shaw.iam.exception.user.UserInfoNotExistsException;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author shaw

@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -88,7 +89,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 			throw new DictAlreadyExistedException();
 		}
 		// 更新字典项
-		BeanUtils.copyProperties(param, dictionary);
+		BeanUtils.copyProperties(param, dictionary, BeanUtilsBean.getNullPropertyNames(param));
 		getDictionaryItemDao().updateDictCodeByDictId(dictionary.getId(), dictionary.getCode());
 		return getDictionaryDao().save(dictionary).toDto();
 	}

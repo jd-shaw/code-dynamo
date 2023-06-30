@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -75,7 +76,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 		if (getSystemParameterDao().existsByParamKeyAndIdNot(param.getParamKey(), param.getId())) {
 			throw new BaseException("key重复");
 		}
-		BeanUtils.copyProperties(param, systemParameter);
+		BeanUtils.copyProperties(param, systemParameter, BeanUtilsBean.getNullPropertyNames(param));
 		getSystemParameterDao().save(systemParameter);
 	}
 

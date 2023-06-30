@@ -19,7 +19,7 @@ public class UserInfoParam implements Serializable {
     private static final long serialVersionUID = -1263052439212534900L;
 
     @Schema(description = "主键")
-    private Long id;
+    private String id;
 
     @Schema(description = "名称")
     private String name;

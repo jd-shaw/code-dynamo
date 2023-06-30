@@ -16,4 +16,9 @@ public interface UserDeptDao extends JpaRepository<UserDept, String> {
 
 	void save(List<UserDept> userDepots);
 
+	void deleteByUserId(String userId);
+
+	void deleteByUserIdIn(List<String> userIds);
+
+	List<UserDept> findByUserId(String userId);
 }

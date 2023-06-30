@@ -1,17 +1,31 @@
 package com.shaw.iam.core.user.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.shaw.commons.utils.ResultConvertUtil;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.shaw.auth.util.PasswordEncoder;
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.BaseException;
+import com.shaw.commons.rest.PageResult;
+import com.shaw.commons.rest.param.PageParam;
+import com.shaw.commons.utils.ResultConvertUtil;
 import com.shaw.iam.code.UserStatusCode;
 import com.shaw.iam.core.client.service.ClientService;
 import com.shaw.iam.core.user.dao.UserInfoDao;
@@ -26,6 +40,7 @@ import com.shaw.iam.dto.user.UserInfoDto;
 import com.shaw.iam.exception.user.UserInfoNotExistsException;
 import com.shaw.iam.param.user.UserInfoParam;
 import com.shaw.iam.param.user.UserRegisterParam;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -90,6 +105,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
+	public UserInfoDto update(UserInfoParam param) {
+		UserInfo userInfo = getUserInfoDao().findById(param.getId()).orElseThrow(UserInfoNotExistsException::new);
+		param.setPassword(null);
+		BeanUtils.copyProperties(param, userInfo, BeanUtilsBean.getNullPropertyNames(param));
+		if (CollectionUtils.isNotEmpty(param.getClientIdList())) {
+			userInfo.setClientIds(String.join(",", param.getClientIdList()));
+		} else {
+			userInfo.setClientIds("");
+		}
+		return getUserInfoDao().save(userInfo).toDto();
+	}
+
+	@Override
 	@Transactional
 	public void updatePassword(String password, String newPassword) {
 		UserInfo userInfo = getUserInfoDao().findById(SecurityUtil.getUserId())
@@ -101,6 +129,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 		if (!passwordEncoder.matches(password, userInfo.getPassword())) {
 			throw new BaseException("旧密码错误");
 		}
+		userInfo.setPassword(newPassword);
+		getUserInfoDao().save(userInfo);
+		getUserExpandInfoService().updateChangePasswordTime(SecurityUtil.getUserId(), LocalDateTime.now());
+	}
+
+	@Override
+	public void updatePasswordById(String userId, String newPassword) {
+		UserInfo userInfo = getUserInfoDao().findById(userId).orElseThrow(UserInfoNotExistsException::new);
+		// 新密码进行加密
+		newPassword = passwordEncoder.encode(userInfo.getUsername(), newPassword);
 		userInfo.setPassword(newPassword);
 		getUserInfoDao().save(userInfo);
 		getUserExpandInfoService().updateChangePasswordTime(SecurityUtil.getUserId(), LocalDateTime.now());
@@ -163,5 +201,35 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public List<UserInfoDto> findByIds(List<String> ids) {
 		return ResultConvertUtil.dtoListConvert(getUserInfoDao().findAllById(ids));
+	}
+
+	@Override
+	public UserInfoDto findById(String id) {
+		return getUserInfoDao().findById(id).orElseThrow(UserInfoNotExistsException::new).toDto();
+	}
+
+	@Override
+	public PageResult<UserInfoDto> page(PageParam pageParam, UserInfoParam param) {
+		Specification<UserInfo> specification = new Specification<UserInfo>() {
+			@Override
+			public Predicate toPredicate(Root<UserInfo> root, CriteriaQuery<?> criteriaQuery,
+					CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicateList = new ArrayList<>();
+				if (StringUtils.hasLength(param.getName())) {
+					predicateList
+							.add(criteriaBuilder.like(root.get("name").as(String.class), "%" + param.getName() + "%"));
+				}
+				return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
+			}
+		};
+		Pageable pageable = PageRequest.of(pageParam.start(), pageParam.getSize());
+		Page<UserInfo> page = getUserInfoDao().findAll(specification, pageable);
+		return new PageResult<UserInfoDto>().setSize(page.getSize()).setCurrent(page.getNumber())
+				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
+	}
+
+	@Override
+	public void updateStatus(String id, int statusCode) {
+		getUserInfoDao().updateStatusById(id, statusCode);
 	}
 }

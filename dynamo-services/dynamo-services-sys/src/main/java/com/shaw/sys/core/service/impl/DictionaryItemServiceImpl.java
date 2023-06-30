@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -84,7 +85,7 @@ public class DictionaryItemServiceImpl implements DictionaryItemService {
 				param.getId())) {
 			throw new DictItemAlreadyExistedException();
 		}
-		BeanUtils.copyProperties(param, dictionaryItem);
+		BeanUtils.copyProperties(param, dictionaryItem, BeanUtilsBean.getNullPropertyNames(param));
 		return getDictionaryItemDao().save(dictionaryItem).toDto();
 	}
 

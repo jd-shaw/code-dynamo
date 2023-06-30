@@ -24,7 +24,6 @@ import java.util.List;
  */
 public interface RoleService {
 
-
     RoleDto add(RoleParam roleParam);
 
     RoleDto update(RoleParam roleParam);
@@ -38,6 +37,7 @@ public interface RoleService {
     List<KeyValue> dropdown();
 
     RoleDto findById(String id);
+    List<RoleDto> findByIds(List<String> ids);
 
     boolean existsByCode(String code);
 

@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
@@ -84,7 +85,7 @@ public class RoleServiceImpl implements RoleService {
 		}
 
 		Role role = getRoleDao().findById(roleParam.getId()).orElseThrow(RoleNotExistedException::new);
-		BeanUtils.copyProperties(roleParam, role);
+		BeanUtils.copyProperties(roleParam, role, BeanUtilsBean.getNullPropertyNames(roleParam));
 		return getRoleDao().save(role).toDto();
 	}
 
@@ -155,6 +156,11 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public RoleDto findById(String id) {
 		return ResultConvertUtil.dtoConvert(getRoleDao().findById(id));
+	}
+
+	@Override
+	public List<RoleDto> findByIds(List<String> ids) {
+		return ResultConvertUtil.dtoListConvert(getRoleDao().findAllById(ids));
 	}
 
 	/**

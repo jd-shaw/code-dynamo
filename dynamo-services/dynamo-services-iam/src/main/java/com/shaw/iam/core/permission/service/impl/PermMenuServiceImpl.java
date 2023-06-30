@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.shaw.commons.rest.dto.BaseDto;
 import com.shaw.commons.utils.TreeBuildUtil;
 import com.shaw.iam.dto.upms.MenuAndResourceDto;
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
@@ -85,7 +86,7 @@ public class PermMenuServiceImpl implements PermMenuService {
 	public PermMenuDto update(PermMenuParam param) {
 		PermMenu permMenu = getPermMenuDao().findById(param.getId()).orElseThrow(() -> new BaseException("菜单权限不存在"));
 		permMenu.setClientCode(null);
-		BeanUtils.copyProperties(param, permMenu);
+		BeanUtils.copyProperties(param, permMenu, BeanUtilsBean.getNullPropertyNames(param));
 
 		// 判断是否是一级菜单，是的话清空父菜单ID
 		if (PermissionCode.MENU_TYPE_TOP.equals(permMenu.getMenuType())) {

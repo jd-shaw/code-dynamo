@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.event.EventListener;
@@ -76,7 +77,7 @@ public class DataScopeServiceImpl implements DataScopeService {
 	@Transactional(rollbackFor = Exception.class)
 	public void update(DataScopeParam param) {
 		DataScope dataScope = getDataScopeDao().findById(param.getId()).orElseThrow(() -> new BaseException("数据不存在"));
-		BeanUtils.copyProperties(param, dataScope);
+		BeanUtils.copyProperties(param, dataScope, BeanUtilsBean.getNullPropertyNames(param));
 		dataScope.setType(null);
 		getDataScopeDao().save(dataScope);
 	}

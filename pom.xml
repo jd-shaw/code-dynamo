@@ -99,12 +99,12 @@
                 <version>${dynamo.service.dataperm.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.shaw</groupId>
+                <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-api</artifactId>
                 <version>${dynamo.service.api.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.shaw</groupId>
+                <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-sys</artifactId>
                 <version>${dynamo.service.sys.version}</version>
             </dependency>

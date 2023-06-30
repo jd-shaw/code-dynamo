@@ -28,6 +28,11 @@
             <artifactId>dynamo-kernel-auth</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.shaw.services</groupId>
+            <artifactId>dynamo-services-sys</artifactId>
+        </dependency>
+
         <!-- lombok 配合 mapstruct -->
         <dependency>
             <groupId>org.projectlombok</groupId>
