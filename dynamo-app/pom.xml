@@ -39,6 +39,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.shaw.services</groupId>
+            <artifactId>dynamo-services-message</artifactId>
+            <version>${dynamo.service.message.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>

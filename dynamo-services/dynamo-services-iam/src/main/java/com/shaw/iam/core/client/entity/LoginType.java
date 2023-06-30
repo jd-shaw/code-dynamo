@@ -25,7 +25,7 @@ import lombok.experimental.Accessors;
 @Entity
 @Table(name = "iam_login_type")
 @Accessors(chain = true)
-public class LonginType extends BaseDomain implements EntityBaseFunction<LoginTypeDto> {
+public class LoginType extends BaseDomain implements EntityBaseFunction<LoginTypeDto> {
 
 	/** 编码 */
 	private String code;
@@ -60,7 +60,7 @@ public class LonginType extends BaseDomain implements EntityBaseFunction<LoginTy
 	/** 描述 */
 	private String description;
 
-	public static LonginType init(LoginTypeParam in) {
+	public static LoginType init(LoginTypeParam in) {
 		return LoginTypeConvert.CONVERT.convert(in);
 	}
 

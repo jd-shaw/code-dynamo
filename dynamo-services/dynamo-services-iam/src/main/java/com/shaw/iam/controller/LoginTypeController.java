@@ -15,6 +15,7 @@ import com.shaw.iam.param.client.LoginTypeParam;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
  * @author shaw
  * @date 2023/06/20
  */
+@Getter
 @Tag(name = "登录方式管理")
 @RestController
 @RequestMapping("/loginType")
@@ -34,62 +36,57 @@ public class LoginTypeController {
 	@Operation(summary = "添加登录方式")
 	@PostMapping(value = "/add")
 	public ResResult<LoginTypeDto> add(@RequestBody LoginTypeParam param) {
-		return Res.ok(loginTypeService.add(param));
+		return Res.ok(getLoginTypeService().add(param));
 	}
 
 	@Operation(summary = "修改登录方式（返回登录方式对象）")
 	@PostMapping(value = "/update")
 	public ResResult<LoginTypeDto> update(@RequestBody LoginTypeParam param) {
-		return Res.ok(loginTypeService.update(param));
+		return Res.ok(getLoginTypeService().update(param));
 	}
 
 	@Operation(summary = "删除登录方式")
 	@DeleteMapping(value = "/delete")
-	public ResResult<Void> delete(Long id) {
+	public ResResult<Void> delete(String id) {
+		getLoginTypeService().delete(id);
 		return Res.ok();
 	}
 
 	@Operation(summary = "通过ID查询登录方式")
-	@GetMapping(value = "/findById")
-	public ResResult<LoginTypeDto> findById(Long id) {
-		return Res.ok();
+	@GetMapping(value = "/find-by-id")
+	public ResResult<LoginTypeDto> findById(String id) {
+		return Res.ok(getLoginTypeService().findById(id));
 	}
 
 	@IgnoreAuth
 	@Operation(summary = "通过code查询登录方式")
-	@GetMapping(value = "/findByCode")
+	@GetMapping(value = "/find-by-code")
 	public ResResult<LoginTypeDto> findByCode(String code) {
-		return Res.ok(loginTypeService.findByCode(code));
+		return Res.ok(getLoginTypeService().findByCode(code));
 	}
 
 	@Operation(summary = "查询所有的登录方式")
-	@GetMapping(value = "/findAll")
+	@GetMapping(value = "/find-all")
 	public ResResult<List<LoginTypeDto>> findAll() {
-		return Res.ok(loginTypeService.findAll());
+		return Res.ok(getLoginTypeService().findAll());
 	}
 
 	@Operation(summary = "分页查询登录方式")
 	@GetMapping(value = "/page")
 	public ResResult<PageResult<LoginTypeDto>> page(PageParam pageParam, LoginTypeParam loginTypeParam) {
-		return Res.ok();
+		return Res.ok(getLoginTypeService().page(pageParam, loginTypeParam));
 	}
 
-	//	@Operation(summary = "超级查询")
-	//	@PostMapping("/superPage")
-	//	public ResResult<PageResult<LoginTypeDto>> superPage(PageParam pageParam, @RequestBody QueryParams queryParams) {
-	//		return Res.ok(loginTypeService.superPage(pageParam, queryParams));
-	//	}
-
 	@Operation(summary = "编码是否被使用")
-	@GetMapping("/existsByCode")
+	@GetMapping("/exists-by-code")
 	public ResResult<Boolean> existsByCode(String code) {
-		return Res.ok(loginTypeService.existsByCode(code));
+		return Res.ok(getLoginTypeService().existsByCode(code));
 	}
 
 	@Operation(summary = "编码是否被使用(不包含自己)")
-	@GetMapping("/existsByCodeNotId")
+	@GetMapping("/exists-by-code-not-id")
 	public ResResult<Boolean> existsByCode(String code, String id) {
-		return Res.ok(loginTypeService.existsByCode(code, id));
+		return Res.ok(getLoginTypeService().existsByCode(code, id));
 	}
 
 }

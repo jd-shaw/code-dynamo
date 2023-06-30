@@ -1,10 +1,11 @@
 package com.shaw.iam.core.client.convert;
 
-import com.shaw.iam.param.client.LoginTypeParam;
-import com.shaw.iam.core.client.entity.LonginType;
-import com.shaw.iam.dto.client.LoginTypeDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
+import com.shaw.iam.core.client.entity.LoginType;
+import com.shaw.iam.dto.client.LoginTypeDto;
+import com.shaw.iam.param.client.LoginTypeParam;
 
 /**
  * 认证终端
@@ -15,10 +16,10 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface LoginTypeConvert {
 
-    LoginTypeConvert CONVERT = Mappers.getMapper(LoginTypeConvert.class);
+	LoginTypeConvert CONVERT = Mappers.getMapper(LoginTypeConvert.class);
 
-    LonginType convert(LoginTypeParam in);
+	LoginType convert(LoginTypeParam in);
 
-    LoginTypeDto convert(LonginType in);
+	LoginTypeDto convert(LoginType in);
 
 }

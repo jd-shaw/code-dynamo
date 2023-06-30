@@ -29,6 +29,8 @@
         <dynamo.service.dataperm.version>1.0.0</dynamo.service.dataperm.version>
         <dynamo.service.api.version>1.0.0</dynamo.service.api.version>
         <dynamo.service.sys.version>1.0.0</dynamo.service.sys.version>
+        <dynamo.service.message.version>1.0.0</dynamo.service.message.version>
+
         <dynamo.commons.swagger.version>1.0.0</dynamo.commons.swagger.version>
         <dynamo.commons.utils.version>1.0.0</dynamo.commons.utils.version>
         <dynamo.commons.redis.version>1.0.0</dynamo.commons.redis.version>
@@ -107,6 +109,11 @@
                 <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-sys</artifactId>
                 <version>${dynamo.service.sys.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shaw.services</groupId>
+                <artifactId>dynamo-services-message</artifactId>
+                <version>${dynamo.service.message.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shaw.kernel</groupId>

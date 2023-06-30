@@ -3,7 +3,6 @@ server:
 spring:
   application:
     name: dynamo-app
-
     hikari:
       # 30 秒, 心跳检测
       keepalive-time: 30000
@@ -19,6 +18,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/code-dynamo?serverTimezone=GMT%2B8&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&nullCatalogMeansCurrent=true
     username: root
     password: 123456
+
   #静态资源加载配置
   mvc:
     static-path-pattern: /**

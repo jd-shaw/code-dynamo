@@ -2,11 +2,10 @@ package com.shaw.iam.core.client.dao;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Repository;
 
-import com.shaw.iam.core.client.entity.LonginType;
+import com.shaw.iam.core.client.entity.LoginType;
 
 /**
  * 终端
@@ -14,13 +13,13 @@ import com.shaw.iam.core.client.entity.LonginType;
  * @author shaw
  * @date 2023/06/20
  */
-@Repository(value = "loginTypeDao")
-public interface LoginTypeDao extends JpaRepository<LonginType, String>, JpaSpecificationExecutor<LonginType> {
+@Repository
+public interface LoginTypeDao extends JpaRepositoryImplementation<LoginType, String> {
 
-	Optional<LonginType> findByCode(String code);
+	Optional<LoginType> findByCode(String code);
 
 	boolean existsByCode(String code);
 
-	boolean existsByCodeAndId(String code, String id);
+	boolean existsByCodeAndIdNot(String code, String id);
 
 }

@@ -7,7 +7,7 @@ import com.shaw.auth.authentication.GetAuthLoginTypeService;
 import com.shaw.auth.entity.AuthLoginType;
 import com.shaw.auth.exception.ClientNotFoundException;
 import com.shaw.iam.core.client.dao.LoginTypeDao;
-import com.shaw.iam.core.client.entity.LonginType;
+import com.shaw.iam.core.client.entity.LoginType;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +30,9 @@ public class GetAuthLoginTypeServiceImpl implements GetAuthLoginTypeService {
 	 */
 	@Override
 	public AuthLoginType getAuthLoginType(String loginType) {
-		LonginType longinType = loginTypeDao.findByCode(loginType).orElseThrow(ClientNotFoundException::new);
+		LoginType type = loginTypeDao.findByCode(loginType).orElseThrow(ClientNotFoundException::new);
 		AuthLoginType authLoginType = new AuthLoginType();
-		BeanUtils.copyProperties(longinType, authLoginType);
+		BeanUtils.copyProperties(type, authLoginType);
 		return authLoginType;
 	}
 
