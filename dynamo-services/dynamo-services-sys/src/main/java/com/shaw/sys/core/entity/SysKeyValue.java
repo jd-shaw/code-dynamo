@@ -1,5 +1,6 @@
 package com.shaw.sys.core.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -7,10 +8,7 @@ import javax.persistence.Transient;
 import com.shaw.commons.rest.dto.KeyValue;
 import com.shaw.mysql.jpa.po.BaseDomain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -31,11 +29,13 @@ public class SysKeyValue extends BaseDomain {
 	/**
 	 * key值
 	 */
+	@Getter(onMethod_ = { @Column(name = "`key`") })
 	private String key;
 
 	/**
 	 * value值
 	 */
+	@Getter(onMethod_ = { @Column(name = "`value`", length = 1000) })
 	private String value;
 
 	/**

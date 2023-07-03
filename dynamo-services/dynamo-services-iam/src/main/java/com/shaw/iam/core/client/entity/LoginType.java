@@ -12,6 +12,7 @@ import com.shaw.mysql.jpa.po.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 /**
@@ -42,19 +43,19 @@ public class LoginType extends BaseDomain implements EntityBaseFunction<LoginTyp
 	private Long timeout;
 
 	/** 是否需要验证码 */
-	@Column(columnDefinition = "int default 0")
+	@Getter(onMethod_ = { @Column(columnDefinition = "int default 0") })
 	private int captcha;
 
 	/** 是否系统内置 */
-	@Column(columnDefinition = "int default 0")
+	@Getter(onMethod_ = { @Column(columnDefinition = "int default 0") })
 	private int isSystem;
 
 	/** 密码错误几次冻结 -1表示不限制 */
-	@Column(columnDefinition = "int default 0")
+	@Getter(onMethod_ = { @Column(columnDefinition = "int default 0") })
 	private int pwdErrNum;
 
 	/** 是否可用 */
-	@Column(columnDefinition = "int default 0")
+	@Getter(onMethod_ = { @Column(columnDefinition = "int default 0") })
 	private int enable;
 
 	/** 描述 */

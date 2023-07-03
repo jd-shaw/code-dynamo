@@ -11,6 +11,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.shaw.sys.core.service.CaptchaService;
+import com.shaw.utils.RandomUIDUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -97,7 +98,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		UserInfo userInfo = UserInfo.init(userInfoParam);
 		userInfo.setAdmin(false).setStatus(UserStatusCode.NORMAL)
 				.setPassword(getPasswordEncoder().encode(userInfo.getUsername(), userInfo.getPassword()))
-				.setRegisterTime(LocalDateTime.now());
+				.setRegisterTime(LocalDateTime.now()).setId(RandomUIDUtils.getUID());
 		getUserInfoDao().save(userInfo);
 		// 扩展信息
 		UserExpandInfo userExpandInfo = new UserExpandInfo();
