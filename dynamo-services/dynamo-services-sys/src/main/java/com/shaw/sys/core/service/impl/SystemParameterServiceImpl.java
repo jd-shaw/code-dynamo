@@ -9,7 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
@@ -27,9 +27,10 @@ import com.shaw.commons.utils.ResultConvertUtil;
 import com.shaw.sys.core.dao.SystemParameterDao;
 import com.shaw.sys.core.dto.SystemParameterDto;
 import com.shaw.sys.core.entity.SystemParameter;
-import com.shaw.sys.core.param.DictionaryParam;
 import com.shaw.sys.core.param.SystemParameterParam;
 import com.shaw.sys.core.service.SystemParameterService;
+import com.shaw.utils.RandomUIDUtils;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +55,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 	 * 添加
 	 */
 	@Override
+	@Transactional
 	public void add(SystemParameterParam param) {
 		SystemParameter systemParameter = SystemParameter.init(param);
 		if (getSystemParameterDao().existsByParamKey(systemParameter.getParamKey())) {
@@ -61,6 +63,8 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 		}
 		// 默认非内置
 		systemParameter.setInternal(false);
+		systemParameter.setId(RandomUIDUtils.getUID());
+		systemParameter.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		getSystemParameterDao().save(systemParameter);
 	}
 
@@ -68,7 +72,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 	 * 更新
 	 */
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional
 	public void update(SystemParameterParam param) {
 		SystemParameter systemParameter = getSystemParameterDao().findById(param.getId())
 				.orElseThrow(() -> new BaseException("参数项不存在"));

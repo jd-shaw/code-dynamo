@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -67,6 +69,8 @@ public class DictionaryItemServiceImpl implements DictionaryItemService {
 				.orElseThrow(() -> new BaseException("字典不存在"));
 		param.setDictCode(dictionary.getCode());
 		DictionaryItem dictionaryItem = DictionaryItem.init(param);
+		dictionaryItem.setId(RandomUIDUtils.getUID());
+		dictionaryItem.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getDictionaryItemDao().save(dictionaryItem).toDto();
 	}
 

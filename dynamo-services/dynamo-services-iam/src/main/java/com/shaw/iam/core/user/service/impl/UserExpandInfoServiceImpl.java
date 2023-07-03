@@ -2,6 +2,9 @@ package com.shaw.iam.core.user.service.impl;
 
 import java.time.LocalDateTime;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.shaw.iam.core.user.dao.UserExpandInfoDao;
@@ -26,6 +29,10 @@ public class UserExpandInfoServiceImpl implements UserExpandInfoService {
 
 	@Override
 	public void save(UserExpandInfo userExpandInfo) {
+		if (StringUtils.isBlank(userExpandInfo.getId())) {
+			userExpandInfo.setId(RandomUIDUtils.getUID());
+			userExpandInfo.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
+		}
 		getUserExpandInfoDao().save(userExpandInfo);
 	}
 

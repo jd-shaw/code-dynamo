@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.utils.bean.BeanUtilsBean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -18,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
@@ -27,6 +27,8 @@ import com.shaw.iam.core.client.entity.Client;
 import com.shaw.iam.core.client.service.ClientService;
 import com.shaw.iam.dto.client.ClientDto;
 import com.shaw.iam.param.client.ClientParam;
+import com.shaw.utils.RandomUIDUtils;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +50,8 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public void add(ClientParam param) {
 		Client client = Client.init(param);
+		client.setId(RandomUIDUtils.getUID());
+		client.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		clientDao.save(client);
 	}
 

@@ -25,6 +25,7 @@ public class BaseDomain implements Serializable {
 	protected Date updateDate;
 	protected String createBy;
 	protected String updateBy;
+	protected int version;
 
 	public static interface BaseView {
 	}
@@ -120,5 +121,15 @@ public class BaseDomain implements Serializable {
 
 	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
+	}
+
+	@JsonView(BaseDomainView.class)
+	@Column(name = "version", columnDefinition = "int default 0")
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 }

@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.shaw.commons.rest.dto.BaseDto;
 import com.shaw.commons.utils.TreeBuildUtil;
 import com.shaw.iam.dto.upms.MenuAndResourceDto;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
@@ -74,6 +75,8 @@ public class PermMenuServiceImpl implements PermMenuService {
 			param.setParentId(null);
 		}
 		PermMenu permission = PermMenu.init(param);
+		permission.setId(RandomUIDUtils.getUID());
+		permission.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getPermMenuDao().save(permission).toDto();
 	}
 

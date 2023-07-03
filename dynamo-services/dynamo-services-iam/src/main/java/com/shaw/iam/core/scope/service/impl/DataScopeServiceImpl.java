@@ -9,7 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.event.EventListener;
@@ -21,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
@@ -39,6 +39,8 @@ import com.shaw.iam.dto.scope.DataScopeDeptDto;
 import com.shaw.iam.dto.scope.DataScopeDto;
 import com.shaw.iam.param.scope.DataScopeDeptParam;
 import com.shaw.iam.param.scope.DataScopeParam;
+import com.shaw.utils.RandomUIDUtils;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -67,6 +69,8 @@ public class DataScopeServiceImpl implements DataScopeService {
 	@Transactional(rollbackFor = Exception.class)
 	public void add(DataScopeParam param) {
 		DataScope dataScope = DataScope.init(param);
+		dataScope.setId(RandomUIDUtils.getUID());
+		dataScope.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		getDataScopeDao().save(dataScope);
 	}
 

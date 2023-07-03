@@ -1,16 +1,18 @@
 package com.shaw.sys.core.service.impl;
 
-import com.shaw.commons.rest.PageResult;
-import com.shaw.commons.rest.param.PageParam;
-import com.shaw.sys.core.param.DictionaryParam;
 import org.springframework.stereotype.Service;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.DataNotExistException;
+import com.shaw.commons.rest.PageResult;
+import com.shaw.commons.rest.param.PageParam;
 import com.shaw.sys.core.dao.AppVersionDao;
 import com.shaw.sys.core.dto.AppVersionDto;
 import com.shaw.sys.core.entity.AppVersion;
 import com.shaw.sys.core.param.AppVersionParam;
+import com.shaw.sys.core.param.DictionaryParam;
 import com.shaw.sys.core.service.AppVersionService;
+import com.shaw.utils.RandomUIDUtils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,8 @@ public class AppVersionServiceImpl implements AppVersionService {
 	@Override
 	public AppVersionDto add(AppVersionParam param) {
 		AppVersion appVersion = AppVersion.init(param);
+		appVersion.setId(RandomUIDUtils.getUID());
+		appVersion.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getAppVersionDao().save(appVersion).toDto();
 	}
 

@@ -8,6 +8,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -59,6 +61,8 @@ public class DictionaryServiceImpl implements DictionaryService {
 			throw new DictAlreadyExistedException();
 		}
 		Dictionary dictionary = Dictionary.init(param);
+		dictionary.setId(RandomUIDUtils.getUID());
+		dictionary.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getDictionaryDao().save(dictionary).toDto();
 	}
 

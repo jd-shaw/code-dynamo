@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
@@ -67,6 +69,8 @@ public class RoleServiceImpl implements RoleService {
 			throw new RoleAlreadyExistedException();
 		}
 		Role role = Role.init(roleParam);
+		role.setId(RandomUIDUtils.getUID());
+		role.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getRoleDao().save(role).toDto();
 	}
 

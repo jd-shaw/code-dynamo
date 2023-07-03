@@ -2,6 +2,8 @@ package com.shaw.iam.core.dept.service.impl;
 
 import java.util.*;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
@@ -58,7 +60,8 @@ public class DeptServiceImpl implements DeptService {
 
 		// 部门code生成
 		dept.setOrgCode(generateOrgCode(parentId));
-
+		dept.setId(RandomUIDUtils.getUID());
+		dept.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return deptDao.save(dept).toDto();
 	}
 

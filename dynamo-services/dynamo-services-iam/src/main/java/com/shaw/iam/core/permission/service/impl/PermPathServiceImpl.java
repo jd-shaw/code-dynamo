@@ -8,6 +8,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
@@ -51,6 +53,8 @@ public class PermPathServiceImpl implements PermPathService {
 	@Override
 	public void save(PermPathParam param) {
 		PermPath permPath = PermPath.init(param);
+		permPath.setId(RandomUIDUtils.getUID());
+		permPath.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		getPermPathDao().save(permPath);
 	}
 

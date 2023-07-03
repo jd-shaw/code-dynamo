@@ -8,6 +8,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -78,6 +80,8 @@ public class LoginTypeServiceImpl implements LoginTypeService {
 		}
 		LoginType loginType = LoginType.init(param);
 		loginType.setIsSystem(0);
+		loginType.setId(RandomUIDUtils.getUID());
+		loginType.setCreateBy(SecurityUtil.getUserIdOrDefaultId());
 		return getLoginTypeDao().save(loginType).toDto();
 	}
 
