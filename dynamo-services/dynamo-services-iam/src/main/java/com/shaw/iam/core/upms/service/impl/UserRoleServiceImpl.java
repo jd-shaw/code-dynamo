@@ -8,15 +8,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.shaw.commons.utils.ResultConvertUtil;
-import com.shaw.iam.dto.role.RoleDto;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shaw.commons.exception.BaseException;
-import com.shaw.iam.core.role.dao.RoleDao;
 import com.shaw.iam.core.upms.dao.UserRoleDao;
 import com.shaw.iam.core.upms.entity.UserRole;
 import com.shaw.iam.core.upms.service.UserRoleService;
@@ -38,6 +35,9 @@ public class UserRoleServiceImpl implements UserRoleService {
 	private final UserInfoDao userInfoDao;
 	private final UserRoleDao userRoleDao;
 
+	/**
+	 * 根据id查询角色id
+	 */
 	@Override
 	public List<String> findRoleIdsByUserId(String userId) {
 		List<UserRole> userRoles = getUserRoleDao().findListByUserId(userId);
@@ -50,7 +50,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 	/**
 	 * 给用户分配角色
 	 */
-	@Transactional(rollbackFor = Exception.class)
+	@Override
+	@Transactional
 	@CacheEvict(value = { USER_PATH, USER_PERM_CODE }, allEntries = true)
 	public void saveAssign(String userId, List<String> roleIds) {
 		// 先删除用户拥有的角色
@@ -63,7 +64,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 	/**
 	 * 给用户分配角色
 	 */
-	@Transactional(rollbackFor = Exception.class)
+	@Override
+	@Transactional
 	@CacheEvict(value = { USER_PATH, USER_PERM_CODE }, allEntries = true)
 	public void saveAssignBatch(List<String> userIds, List<String> roleIds) {
 		List<UserInfo> userInfos = userInfoDao.findAllById(userIds);
@@ -75,21 +77,6 @@ public class UserRoleServiceImpl implements UserRoleService {
 				.flatMap(Collection::stream).collect(Collectors.toList());
 		getUserRoleDao().saveAll(userRoles);
 	}
-
-	/**
-	 * 根据id查询角色id
-	 */
-	//	public List<String> findRoleIdsByUser(String userId) {
-	//		return userroleDao.findAllByUser(userId).stream().map(UserRole::getRoleId).distinct()
-	//				.collect(Collectors.toList());
-	//	}
-
-	/**
-	 * 查询用户所对应的角色
-	 */
-	//	public List<RoleDto> findRolesByUser(Long userId) {
-	//		return ResultConvertUtil.dtoListConvert(roleDao.findById(this.findRoleIdsByUser(userId)));
-	//	}
 
 	/**
 	 * 创建用户角色关联

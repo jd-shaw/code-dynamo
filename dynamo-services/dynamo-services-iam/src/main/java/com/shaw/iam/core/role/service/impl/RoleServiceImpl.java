@@ -10,9 +10,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.auth.util.SecurityUtil;
-import com.shaw.utils.RandomUIDUtils;
-import com.shaw.utils.bean.BeanUtilsBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
@@ -23,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.dto.KeyValue;
 import com.shaw.commons.rest.param.PageParam;
@@ -39,6 +37,8 @@ import com.shaw.iam.exception.role.RoleAlreadyExistedException;
 import com.shaw.iam.exception.role.RoleAlreadyUsedException;
 import com.shaw.iam.exception.role.RoleNotExistedException;
 import com.shaw.iam.param.role.RoleParam;
+import com.shaw.utils.RandomUIDUtils;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

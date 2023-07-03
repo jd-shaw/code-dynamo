@@ -16,11 +16,11 @@ import java.util.List;
 @Schema(title = "用户部门批量关联")
 public class UserDeptBatchParam {
 
-    @Schema(description = "用户id")
-    @NotEmpty(message = "用户id不可为空")
-    private List<Long> userIds;
+	@Schema(description = "用户id")
+	@NotEmpty(message = "用户id不可为空")
+	private List<String> userIds;
 
-    @Schema(description = "部门id集合")
-    private List<Long> deptIds;
+	@Schema(description = "部门id集合")
+	private List<String> deptIds;
 
 }

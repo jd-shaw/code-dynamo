@@ -16,11 +16,11 @@ import java.util.List;
 @Schema(title = "用户部门关联")
 public class UserDeptParam {
 
-    @Schema(description = "用户id")
-    @NotNull(message = "用户id不可为空")
-    private Long userId;
+	@Schema(description = "用户id")
+	@NotNull(message = "用户id不可为空")
+	private String userId;
 
-    @Schema(description = "部门id集合")
-    private List<Long> deptIds;
+	@Schema(description = "部门id集合")
+	private List<String> deptIds;
 
 }

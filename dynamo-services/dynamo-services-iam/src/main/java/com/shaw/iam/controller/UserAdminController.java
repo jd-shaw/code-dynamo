@@ -41,25 +41,25 @@ public class UserAdminController {
 	private final UserInfoService userInfoService;
 
 	@Operation(summary = "根据用户id查询用户")
-	@GetMapping("/findById")
+	@GetMapping("/find-by-id")
 	public ResResult<UserInfoDto> findById(String id) {
 		return Res.ok(getUserInfoService().findById(id));
 	}
 
 	@Operation(summary = "查询用户详情")
-	@GetMapping("/getUserInfoWhole")
+	@GetMapping("/get-user-info-whole")
 	public ResResult<UserInfoWhole> getUserInfoWhole(String id) {
 		return Res.ok(userAdminService.getUserInfoWhole(id));
 	}
 
 	@Operation(summary = "根据邮箱查询用户")
-	@GetMapping("/getByEmail")
+	@GetMapping("/get-by-email")
 	public ResResult<UserInfoDto> getByEmail(String email) {
 		return Res.ok(getUserInfoService().findByEmail(email));
 	}
 
 	@Operation(summary = "根据手机号查询用户")
-	@GetMapping("/getByPhone")
+	@GetMapping("/get-by-phone")
 	public ResResult<UserInfoDto> getByPhone(String phone) {
 		return Res.ok(getUserInfoService().findByPhone(phone));
 	}
@@ -80,7 +80,7 @@ public class UserAdminController {
 
 	@Operation(summary = "重置密码")
 	@OperateLog(title = "重置密码", businessType = OperateLog.BusinessType.UPDATE, saveParam = true)
-	@PostMapping("/restartPassword")
+	@PostMapping("/restart-password")
 	public ResResult<Void> restartPassword(@NotNull(message = "用户不可为空") String userId,
 			@NotBlank(message = "新密码不能为空") String newPassword) {
 		getUserInfoService().updatePasswordById(userId, newPassword);
@@ -97,7 +97,7 @@ public class UserAdminController {
 
 	@OperateLog(title = "批量锁定用户", businessType = OperateLog.BusinessType.UPDATE, saveParam = true)
 	@Operation(summary = "批量锁定用户")
-	@PostMapping("/lockBatch")
+	@PostMapping("/lock-batch")
 	public ResResult<Void> lockBatch(@RequestBody @NotEmpty(message = "用户集合不可为空") List<String> userIds) {
 		getUserAdminService().lockBatch(userIds);
 		return Res.ok();
@@ -113,7 +113,7 @@ public class UserAdminController {
 
 	@OperateLog(title = "批量解锁用户", businessType = OperateLog.BusinessType.UPDATE, saveParam = true)
 	@Operation(summary = "批量解锁用户")
-	@PostMapping("/unlockBatch")
+	@PostMapping("/unlock-batch")
 	public ResResult<Void> unlockBatch(@RequestBody @NotEmpty(message = "用户集合不可为空") List<String> userIds) {
 		getUserAdminService().unlockBatch(userIds);
 		return Res.ok();
