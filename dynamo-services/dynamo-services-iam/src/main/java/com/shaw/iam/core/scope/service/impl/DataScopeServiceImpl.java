@@ -193,6 +193,18 @@ public class DataScopeServiceImpl implements DataScopeService {
 	}
 
 	/**
+	 * 查询用户所对应的数据权限信息
+	 */
+	@Override
+	public DataScopeDto findDataScopeByUserId(String userId) {
+		String dataScopeIdByUser = getUserDataScopeService().findDataScopeIdByUserId(userId);
+		if (org.apache.commons.lang3.StringUtils.isBlank(dataScopeIdByUser)) {
+			return new DataScopeDto();
+		}
+		return findById(dataScopeIdByUser);
+	}
+
+	/**
 	 * 列表查询
 	 */
 	@Override

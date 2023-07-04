@@ -12,6 +12,8 @@ import com.shaw.iam.param.dept.DeptParam;
  */
 public interface DeptService {
 
+	List<DeptDto> findAll();
+
 	List<DeptDto> findByIds(List<String> ids);
 
 	DeptDto add(DeptParam param);

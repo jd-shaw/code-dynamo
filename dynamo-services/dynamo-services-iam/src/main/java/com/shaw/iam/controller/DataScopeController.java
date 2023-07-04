@@ -114,7 +114,7 @@ public class DataScopeController {
 	}
 
 	@Operation(summary = "获取关联的用户列表")
-	@GetMapping("/findusers-by-data-scope-id")
+	@GetMapping("/find-users-by-data-scope-id")
 	public ResResult<List<DataScopeUserInfoDto>> findUsersByDataScopeId(String id) {
 		return Res.ok(getDataScopeUserService().findUsersByDataScopeId(id));
 	}

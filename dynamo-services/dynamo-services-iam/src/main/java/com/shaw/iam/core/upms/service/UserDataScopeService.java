@@ -1,9 +1,8 @@
 package com.shaw.iam.core.upms.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.shaw.iam.dto.scope.DataScopeDto;
 
 /**
  * 用户数据权限关联关系
@@ -16,4 +15,10 @@ public interface UserDataScopeService {
 	boolean existsByDataScopeId(String dataScopeId);
 
 	void deleteByDataScopeId(String dataScopeId);
+
+	void saveAssign(String userId, String dataScopeId);
+
+	void saveAssignBatch(List<String> userIds, String dataScopeId);
+
+	String findDataScopeIdByUserId(String userId);
 }

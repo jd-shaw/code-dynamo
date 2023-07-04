@@ -43,6 +43,11 @@ public class DeptServiceImpl implements DeptService {
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Override
+	public List<DeptDto> findAll() {
+		return ResultConvertUtil.dtoListConvert(getDeptDao().findAll());
+	}
+
+	@Override
 	public List<DeptDto> findByIds(List<String> ids) {
 		return ResultConvertUtil.dtoListConvert(getDeptDao().findAllById(ids));
 	}

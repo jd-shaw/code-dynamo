@@ -38,6 +38,8 @@ public interface DataScopeService {
 
 	DataScopeDto findById(String id);
 
+	DataScopeDto findDataScopeByUserId(String userId);
+
 	List<DataScopeDto> findAll();
 
 	PageResult<DataScopeDto> page(PageParam pageParam, DataScopeParam param);
