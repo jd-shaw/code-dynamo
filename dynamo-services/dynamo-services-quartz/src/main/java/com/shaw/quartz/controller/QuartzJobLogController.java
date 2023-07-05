@@ -33,7 +33,7 @@ public class QuartzJobLogController {
     }
 
     @Operation(summary = "单条")
-    @GetMapping("/findById")
+    @GetMapping("/find-by-id")
     public ResResult<QuartzJobLogDto> findById(String id) {
         return Res.ok(quartzJobLogService.findById(id));
     }

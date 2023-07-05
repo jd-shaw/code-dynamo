@@ -1,7 +1,7 @@
 # CodeDynamo 学习项目
 
 ## 项目规划
-项目计划采用Springboot、sa-token、hibernate等框架搭建初始项目
+项目计划采用Springboot、sa-token、jpa hibernate等框架搭建初始项目
 
 ## 问题
 1. swagger打开出现 `Knife4j文档请求异常`、`Failed to load API definition.`

@@ -45,7 +45,7 @@ public class QuartzJobScheduler {
      * @param cron         表达式
      * @param parameter    参数
      */
-    public void add(Long id, String jobClassName, String cron, String parameter) {
+    public void add(String id, String jobClassName, String cron, String parameter) {
         try {
             String idStr = String.valueOf(id);
             // 启动调度器
@@ -72,7 +72,7 @@ public class QuartzJobScheduler {
     /**
      * 删除定时任务
      */
-    public void delete(Long id) {
+    public void delete(String id) {
         try {
             String idStr = String.valueOf(id);
             scheduler.pauseTrigger(TriggerKey.triggerKey(idStr));
