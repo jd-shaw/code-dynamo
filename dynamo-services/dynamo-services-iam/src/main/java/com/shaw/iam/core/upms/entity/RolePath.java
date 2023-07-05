@@ -3,6 +3,9 @@ package com.shaw.iam.core.upms.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.shaw.commons.function.EntityBaseFunction;
+import com.shaw.iam.core.upms.convert.RolePathConvert;
+import com.shaw.iam.dto.upms.RolePathDto;
 import com.shaw.mysql.jpa.po.BaseDomain;
 
 import lombok.Data;
@@ -22,7 +25,7 @@ import lombok.experimental.Accessors;
 @Entity
 @Table(name = "iam_role_path")
 @NoArgsConstructor
-public class RolePath extends BaseDomain {
+public class RolePath extends BaseDomain implements EntityBaseFunction<RolePathDto> {
 
 	/**
 	 * 角色id
@@ -39,4 +42,14 @@ public class RolePath extends BaseDomain {
 		this.permissionId = permissionId;
 	}
 
+	public RolePath(String id, String createBy, String roleId, String permissionId) {
+		super(id, createBy);
+		this.roleId = roleId;
+		this.permissionId = permissionId;
+	}
+
+	@Override
+	public RolePathDto toDto() {
+		return RolePathConvert.CONVERT.convert(this);
+	}
 }

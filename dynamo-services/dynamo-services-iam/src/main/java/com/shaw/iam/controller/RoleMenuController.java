@@ -38,19 +38,20 @@ public class RoleMenuController {
 	@PostMapping("/save")
 	public ResResult<Boolean> save(@RequestBody RolePermissionParam param) {
 		ValidationUtil.validateParam(param, RolePermissionParam.PermMenu.class);
+		getRolePermService().save(param.getRoleId(), param.getClientCode(), param.getPermissionIds());
 		return Res.ok(true);
 	}
 
 	@Operation(summary = "获取权限菜单id列表,不包含资源权限")
 	@GetMapping("/find-menu-ids")
 	public ResResult<List<String>> findMenuIds(String clientCode) {
-		return Res.ok();
+		return Res.ok(getRolePermService().findMenuIds(clientCode));
 	}
 
 	@Operation(summary = "根据角色id获取关联权限id集合(包含资源和菜单)")
 	@GetMapping("/find-permission-ids-by-role")
-	public ResResult<List<String>> findPermissionIdsByRole(Long roleId, String clientCode) {
-		return Res.ok();
+	public ResResult<List<String>> findPermissionIdsByRole(String roleId, String clientCode) {
+		return Res.ok(getRolePermService().findPermissionIdsByRole(roleId, clientCode));
 	}
 
 	@IgnoreAuth

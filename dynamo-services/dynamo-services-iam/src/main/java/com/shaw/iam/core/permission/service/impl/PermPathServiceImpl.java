@@ -2,15 +2,14 @@ package com.shaw.iam.core.permission.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.auth.util.SecurityUtil;
-import com.shaw.utils.RandomUIDUtils;
-import com.shaw.utils.bean.BeanUtilsBean;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
@@ -21,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
@@ -31,9 +31,15 @@ import com.shaw.iam.core.permission.dao.PermPathDao;
 import com.shaw.iam.core.permission.entity.PermPath;
 import com.shaw.iam.core.permission.service.PermPathService;
 import com.shaw.iam.core.upms.service.RolePathService;
+import com.shaw.iam.core.upms.service.UserRoleService;
+import com.shaw.iam.core.user.service.UserInfoService;
 import com.shaw.iam.dto.permission.PermPathDto;
+import com.shaw.iam.dto.upms.RolePathDto;
+import com.shaw.iam.dto.user.UserInfoDto;
 import com.shaw.iam.param.permission.PermPathBatchEnableParam;
 import com.shaw.iam.param.permission.PermPathParam;
+import com.shaw.utils.RandomUIDUtils;
+import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,7 +54,10 @@ import lombok.Getter;
 public class PermPathServiceImpl implements PermPathService {
 
 	private final PermPathDao permPathDao;
+
 	private final RolePathService rolePathService;
+	private final UserInfoService userInfoService;
+	private final UserRoleService userRoleService;
 
 	@Override
 	public void save(PermPathParam param) {
@@ -113,6 +122,23 @@ public class PermPathServiceImpl implements PermPathService {
 	}
 
 	/**
+	 * 查询用户查询拥有的请求权限信息
+	 */
+	@Override
+	public List<PermPathDto> findPathsByUser(String userId) {
+		UserInfoDto userInfo = getUserInfoService().findById(userId);
+
+		List<PermPathDto> paths;
+		if (userInfo.isAdmin()) {
+			paths = findAll();
+		} else {
+			paths = this.findPermissionsByUser(userId);
+		}
+		return paths;
+
+	}
+
+	/**
 	 * 列表
 	 */
 	@Override
@@ -144,4 +170,22 @@ public class PermPathServiceImpl implements PermPathService {
 				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
 	}
 
+	/**
+	 * 查询用户查询拥有的权限信息
+	 */
+	private List<PermPathDto> findPermissionsByUser(String userId) {
+		List<PermPathDto> permissions = new ArrayList<>(0);
+
+		List<String> roleIds = getUserRoleService().findRoleIdsByUserId(userId);
+		if (CollectionUtils.isEmpty(roleIds)) {
+			return permissions;
+		}
+		List<RolePathDto> rolePaths = getRolePathService().findIdsByRole(roleIds);
+		List<String> permissionIds = rolePaths.stream().map(RolePathDto::getPermissionId).distinct()
+				.collect(Collectors.toList());
+		if (CollectionUtils.isNotEmpty(permissionIds)) {
+			permissions = findByIds(permissionIds);
+		}
+		return permissions;
+	}
 }

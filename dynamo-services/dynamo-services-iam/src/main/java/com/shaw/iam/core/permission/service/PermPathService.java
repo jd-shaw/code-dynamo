@@ -31,6 +31,8 @@ public interface PermPathService {
 
 	List<PermPathDto> findByIds(List<String> ids);
 
+	List<PermPathDto> findPathsByUser(String userId);
+
 	List<PermPathDto> findAll();
 
 	PageResult<PermPathDto> page(PageParam pageParam, PermPathParam param);
