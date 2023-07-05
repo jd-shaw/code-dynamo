@@ -20,6 +20,7 @@
         <module>dynamo-services-sys</module>
         <module>dynamo-services-dataperm</module>
         <module>dynamo-services-message</module>
+        <module>dynamo-services-quartz</module>
     </modules>
 
     <dependencyManagement>

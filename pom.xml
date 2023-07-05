@@ -30,6 +30,7 @@
         <dynamo.service.api.version>1.0.0</dynamo.service.api.version>
         <dynamo.service.sys.version>1.0.0</dynamo.service.sys.version>
         <dynamo.service.message.version>1.0.0</dynamo.service.message.version>
+        <dynamo.service.quartz.version>1.0.0</dynamo.service.quartz.version>
 
         <dynamo.commons.swagger.version>1.0.0</dynamo.commons.swagger.version>
         <dynamo.commons.utils.version>1.0.0</dynamo.commons.utils.version>
@@ -114,6 +115,11 @@
                 <groupId>com.shaw.services</groupId>
                 <artifactId>dynamo-services-message</artifactId>
                 <version>${dynamo.service.message.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shaw.services</groupId>
+                <artifactId>dynamo-services-quartz</artifactId>
+                <version>${dynamo.service.quartz.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shaw.kernel</groupId>
