@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/7/5
  */
 @ConfigurationPropertiesScan
