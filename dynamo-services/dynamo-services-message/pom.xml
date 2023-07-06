@@ -24,6 +24,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.shaw.kernel</groupId>
+			<artifactId>dynamo-kernel-auth</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.shaw.commons</groupId>
 			<artifactId>dynamo-commons-redis</artifactId>
 		</dependency>
