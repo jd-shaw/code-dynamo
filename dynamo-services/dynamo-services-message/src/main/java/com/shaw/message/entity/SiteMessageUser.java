@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 @Data
 @Entity
 @Accessors(chain = true)
-@Table(name = "sys_site_message_user")
+@Table(name = "site_message_user")
 public class SiteMessageUser extends BaseDomain {
 
 	/** 消息id */
