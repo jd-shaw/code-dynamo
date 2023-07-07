@@ -1,4 +1,4 @@
-package com.shaw.auth.service;
+package com.shaw.auth.authentication;
 
 import java.util.Objects;
 
