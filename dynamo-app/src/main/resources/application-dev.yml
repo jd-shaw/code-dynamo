@@ -12,7 +12,7 @@ spring:
     show-sql: false
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/code-dynamo?serverTimezone=GMT%2B8&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&nullCatalogMeansCurrent=true
@@ -30,6 +30,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+    database: 1
 # 自定义配置信息
 dynamo:
   common:
@@ -51,6 +52,9 @@ dynamo:
           - com.shaw.file
         "[参数与数据字典]":
           - com.shaw.sys
+    exception:
+      # 显示详细异常
+      show-full-message: true
     # 认证
   starter:
     auth:
@@ -62,9 +66,7 @@ dynamo:
         - '/swagger-resources/**'
         - '/token/**'
         - '/ws/**'
-        - '/demo/**'
         - '/test/**'
-        - "/plumelog/**"
         - '/webjars/**'
         - '/css/**'
         - '/error'
