@@ -2,8 +2,6 @@ package com.shaw.commons.code;
 
 /**
  * web请求头常量
- *
- * @author network
  */
 public interface WebHeaderCode {
 
