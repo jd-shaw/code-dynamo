@@ -10,12 +10,12 @@ import com.shaw.auth.code.AuthLoginTypeCode;
  */
 public interface UsernamePasswordAuthentication extends AbstractAuthentication {
 
-    /**
-     * 账密登录
-     */
-    @Override
-    default String getLoginType() {
-        return AuthLoginTypeCode.PASSWORD;
-    }
+	/**
+	 * 账密登录
+	 */
+	@Override
+	default String getLoginType() {
+		return AuthLoginTypeCode.PASSWORD;
+	}
 
 }
