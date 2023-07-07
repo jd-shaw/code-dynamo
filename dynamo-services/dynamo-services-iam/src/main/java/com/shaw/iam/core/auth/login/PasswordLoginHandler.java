@@ -5,7 +5,6 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 
-import com.shaw.iam.core.user.service.UserInfoService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,9 @@ import com.shaw.auth.util.PasswordEncoder;
 import com.shaw.commons.entity.UserDetail;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.iam.code.UserStatusCode;
+import com.shaw.iam.core.user.service.UserInfoService;
 import com.shaw.iam.dto.user.UserInfoDto;
+import com.shaw.sys.core.service.CaptchaService;
 import com.shaw.utils.text.RegexUtil;
 
 import lombok.RequiredArgsConstructor;
@@ -50,6 +51,7 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 
 	private final PasswordEncoder passwordEncoder;
 	private final UserInfoService userInfoService;
+	private final CaptchaService captchaService;
 
 	/**
 	 * 认证前置操作, 默认处理验证码
@@ -65,10 +67,10 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 			if (StringUtils.isBlank(captcha)) {
 				throw new BaseException("验证码为空");
 			}
-			//			if (!validateImgCaptcha(captchaKey, captcha)) {
-			//				String username = this.obtainUsername(request);
-			//				throw new LoginFailureException(username, "验证码不正确");
-			//			}
+			if (!captchaService.validateImgCaptcha(captchaKey, captcha)) {
+				String username = this.obtainUsername(request);
+				throw new LoginFailureException(username, "验证码不正确");
+			}
 		}
 	}
 
@@ -80,7 +82,7 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 		String username = this.obtainUsername(context.getRequest());
 		String password = this.obtainPassword(context.getRequest());
 		UserDetail userDetail = this.loadUserByUsername(username);
-		String saltPassword = passwordEncoder.encode(username,password);
+		String saltPassword = passwordEncoder.encode(username, password);
 		// 比对密码未通过
 		if (!Objects.equals(saltPassword, userDetail.getPassword())) {
 			this.passwordError(userDetail, context);
@@ -104,7 +106,7 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 	@Override
 	public void authenticationAfter(AuthInfoResult authInfoResult, LoginAuthContext context) {
 		String captchaKey = this.obtainCaptchaKey(context.getRequest());
-		//		deleteImgCaptcha(captchaKey);
+		captchaService.deleteImgCaptcha(captchaKey);
 	}
 
 	/**
@@ -113,16 +115,16 @@ public class PasswordLoginHandler implements UsernamePasswordAuthentication {
 	public UserDetail loadUserByUsername(String username) throws UserNotFoundException {
 		UserInfoDto userInfoDto = null;
 		// 1. 获取账号密码
-				if (RegexUtil.isEmailPattern(username)) {
-					// 根据 Email 获取用户信息
-					userInfoDto = userInfoService.findByEmail(username);
-				} else if (RegexUtil.isPhonePattern(username)) {
-					// 根据 手机号 获取用户信息
-					userInfoDto = userInfoService.findByPhone(username);
-				} else {
-					// 根据 账号 获取账户信息
-					userInfoDto = userInfoService.findByAccount(username);
-				}
+		if (RegexUtil.isEmailPattern(username)) {
+			// 根据 Email 获取用户信息
+			userInfoDto = userInfoService.findByEmail(username);
+		} else if (RegexUtil.isPhonePattern(username)) {
+			// 根据 手机号 获取用户信息
+			userInfoDto = userInfoService.findByPhone(username);
+		} else {
+			// 根据 账号 获取账户信息
+			userInfoDto = userInfoService.findByAccount(username);
+		}
 		if (Objects.isNull(userInfoDto)) {
 			throw new UserNotFoundException(username);
 		}
