@@ -5,3 +5,8 @@ spring:
     name: dynamo
   profiles:
     active: dev
+
+# 安全框架配置
+sa-token:
+  is-print: false
+  token-name: AccessToken
