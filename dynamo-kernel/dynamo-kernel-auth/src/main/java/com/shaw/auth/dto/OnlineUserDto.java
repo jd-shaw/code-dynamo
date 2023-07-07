@@ -1,4 +1,4 @@
-package com.shaw.auth.online;
+package com.shaw.auth.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
