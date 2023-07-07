@@ -1,4 +1,4 @@
-package com.shaw.iam.core.auth.handler;
+package com.shaw.iam.core.auth.service.impl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
 import com.shaw.auth.entity.AuthInfoResult;
-import com.shaw.auth.handler.LoginSuccessHandler;
+import com.shaw.auth.service.LoginSuccessService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Component
 @RequiredArgsConstructor
-public class LoginSuccessHandlerImpl implements LoginSuccessHandler {
+public class LoginSuccessServiceImpl implements LoginSuccessService {
 
 	@Override
 	public void onLoginSuccess(HttpServletRequest request, HttpServletResponse response,

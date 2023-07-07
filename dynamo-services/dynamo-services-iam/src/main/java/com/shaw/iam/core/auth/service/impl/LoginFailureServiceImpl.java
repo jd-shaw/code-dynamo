@@ -1,4 +1,4 @@
-package com.shaw.iam.core.auth.handler;
+package com.shaw.iam.core.auth.service.impl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
 import com.shaw.auth.exception.LoginFailureException;
-import com.shaw.auth.handler.LoginFailureHandler;
+import com.shaw.auth.service.LoginFailureService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Component
 @RequiredArgsConstructor
-public class LoginFailureHandlerImpl implements LoginFailureHandler {
+public class LoginFailureServiceImpl implements LoginFailureService {
 
 	@Override
 	public void onLoginFailure(HttpServletRequest request, HttpServletResponse response, LoginFailureException e) {

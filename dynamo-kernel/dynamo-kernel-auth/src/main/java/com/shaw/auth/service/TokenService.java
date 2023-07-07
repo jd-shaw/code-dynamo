@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.shaw.auth.authentication.AbstractAuthentication;
-import com.shaw.auth.authentication.GetAuthClientService;
-import com.shaw.auth.authentication.GetAuthLoginTypeService;
+import com.shaw.auth.service.GetAuthClientService;
+import com.shaw.auth.service.GetAuthLoginTypeService;
 import com.shaw.auth.configuration.AuthProperties;
 import com.shaw.auth.entity.AuthClient;
 import com.shaw.auth.entity.AuthInfoResult;
