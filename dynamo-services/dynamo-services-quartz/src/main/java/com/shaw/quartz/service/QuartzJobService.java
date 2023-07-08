@@ -6,7 +6,7 @@ import com.shaw.quartz.dto.QuartzJobDto;
 import com.shaw.quartz.param.QuartzJobParam;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/7/5
  */
 public interface QuartzJobService {
