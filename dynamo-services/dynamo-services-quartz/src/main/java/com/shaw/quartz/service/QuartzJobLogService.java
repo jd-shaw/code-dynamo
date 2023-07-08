@@ -7,7 +7,7 @@ import com.shaw.quartz.entity.QuartzJobLog;
 import com.shaw.quartz.param.QuartzJobLogQuery;
 
 /**
- * @author xjd
+ * @author shaw
  * @date 2023/7/5
  */
 public interface QuartzJobLogService {
