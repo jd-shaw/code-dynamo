@@ -1,4 +1,4 @@
-package com.shaw.auth.authentication;
+package com.shaw.auth.service;
 
 import com.shaw.auth.entity.AuthLoginType;
 
