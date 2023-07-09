@@ -1,11 +1,11 @@
-package com.shaw.auth.impl;
+package com.shaw.auth.saroute;
 
 import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 
-import com.shaw.auth.authentication.RouterCheck;
+import com.shaw.auth.saroute.RouterCheck;
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.annotation.IgnoreAuth;
 
