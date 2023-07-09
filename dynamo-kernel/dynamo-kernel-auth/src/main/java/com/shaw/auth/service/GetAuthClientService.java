@@ -1,4 +1,4 @@
-package com.shaw.auth.authentication;
+package com.shaw.auth.service;
 
 import com.shaw.auth.entity.AuthClient;
 
@@ -10,9 +10,9 @@ import com.shaw.auth.entity.AuthClient;
  */
 public interface GetAuthClientService {
 
-    /**
-     * 认证应用
-     */
-    AuthClient getAuthApplication(String authApplicationCode);
+	/**
+	 * 认证应用
+	 */
+	AuthClient getAuthApplication(String authApplicationCode);
 
 }
