@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shaw.auth.online.OnlineUserDto;
-import com.shaw.auth.online.OnlineUserService;
+import com.shaw.auth.dto.OnlineUserDto;
+import com.shaw.auth.service.OnlineUserService;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.Res;
 import com.shaw.commons.rest.ResResult;
