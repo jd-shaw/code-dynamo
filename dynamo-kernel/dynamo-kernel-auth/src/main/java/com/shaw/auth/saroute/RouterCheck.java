@@ -1,4 +1,4 @@
-package com.shaw.auth.authentication;
+package com.shaw.auth.saroute;
 
 /**
  * 路由拦截检查
