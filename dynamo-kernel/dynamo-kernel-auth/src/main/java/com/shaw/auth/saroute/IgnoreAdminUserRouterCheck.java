@@ -1,8 +1,8 @@
-package com.shaw.auth.impl;
+package com.shaw.auth.saroute;
 
 import org.springframework.stereotype.Component;
 
-import com.shaw.auth.authentication.RouterCheck;
+import com.shaw.auth.saroute.RouterCheck;
 import com.shaw.auth.configuration.AuthProperties;
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.entity.UserDetail;
