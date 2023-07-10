@@ -1,4 +1,4 @@
-package com.shaw.exception.handler;
+package com.shaw.exception.handler.handler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
