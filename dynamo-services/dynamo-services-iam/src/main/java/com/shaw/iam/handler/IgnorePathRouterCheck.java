@@ -1,11 +1,9 @@
 package com.shaw.iam.handler;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
-import com.shaw.auth.authentication.RouterCheck;
+import com.shaw.auth.saroute.RouterCheck;
 import com.shaw.iam.core.permission.service.PermPathService;
 import com.shaw.utils.web.WebServletUtil;
 

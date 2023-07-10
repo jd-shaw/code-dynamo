@@ -1,10 +1,10 @@
-package com.shaw.iam.core.auth.handler;
+package com.shaw.iam.core.auth.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
-import com.shaw.auth.authentication.GetAuthClientService;
+import com.shaw.auth.service.GetAuthClientService;
 import com.shaw.auth.entity.AuthClient;
 import com.shaw.auth.exception.ApplicationNotFoundException;
 import com.shaw.iam.core.client.dao.ClientDao;

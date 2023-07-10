@@ -36,6 +36,7 @@
         <dynamo.commons.utils.version>1.0.0</dynamo.commons.utils.version>
         <dynamo.commons.redis.version>1.0.0</dynamo.commons.redis.version>
         <dynamo.commons.jackson.version>1.0.0</dynamo.commons.jackson.version>
+        <dynamo.commons.exception.handler.version>1.0.0</dynamo.commons.exception.handler.version>
         <dynamo.kernel.commons.version>1.0.0</dynamo.kernel.commons.version>
         <dynamo.kernel.auth.version>1.0.0</dynamo.kernel.auth.version>
 
@@ -80,6 +81,11 @@
                 <groupId>com.shaw.commons</groupId>
                 <artifactId>dynamo-commons-jackson</artifactId>
                 <version>${dynamo.commons.jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shaw.commons</groupId>
+                <artifactId>dynamo-commons-exception-handler</artifactId>
+                <version>${dynamo.commons.exception.handler.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shaw.datasource</groupId>

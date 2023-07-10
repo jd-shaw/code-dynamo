@@ -1,4 +1,4 @@
-package com.shaw.auth.handler;
+package com.shaw.auth.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import com.shaw.auth.entity.AuthInfoResult;
  * @author shaw
  * @date 2023/06/20
  */
-public interface LoginSuccessHandler {
+public interface LoginSuccessService {
 
 	void onLoginSuccess(HttpServletRequest request, HttpServletResponse response, AuthInfoResult authInfoResult);
 

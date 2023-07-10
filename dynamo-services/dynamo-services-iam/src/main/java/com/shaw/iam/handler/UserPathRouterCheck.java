@@ -1,12 +1,11 @@
 package com.shaw.iam.handler;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
-import com.shaw.auth.authentication.RouterCheck;
+import com.shaw.auth.saroute.RouterCheck;
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.entity.UserDetail;
 import com.shaw.iam.core.upms.service.RolePathService;

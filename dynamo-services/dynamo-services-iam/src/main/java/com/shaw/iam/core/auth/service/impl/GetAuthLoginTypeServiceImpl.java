@@ -1,9 +1,9 @@
-package com.shaw.iam.core.auth.handler;
+package com.shaw.iam.core.auth.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import com.shaw.auth.authentication.GetAuthLoginTypeService;
+import com.shaw.auth.service.GetAuthLoginTypeService;
 import com.shaw.auth.entity.AuthLoginType;
 import com.shaw.auth.exception.ClientNotFoundException;
 import com.shaw.iam.core.client.dao.LoginTypeDao;

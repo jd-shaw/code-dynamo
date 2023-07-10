@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 
 import com.google.common.collect.Lists;
-import com.shaw.auth.authentication.RouterCheck;
+import com.shaw.auth.saroute.RouterCheck;
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.annotation.PermCode;
 import com.shaw.commons.entity.UserDetail;

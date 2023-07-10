@@ -40,6 +40,10 @@
             <artifactId>dynamo-commons-swagger</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.shaw.commons</groupId>
+            <artifactId>dynamo-commons-exception-handler</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-ui</artifactId>
             <version>${knife4j.version}</version>

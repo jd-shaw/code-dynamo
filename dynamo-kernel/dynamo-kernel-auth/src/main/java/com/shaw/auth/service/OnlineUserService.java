@@ -1,10 +1,11 @@
-package com.shaw.auth.online;
+package com.shaw.auth.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.shaw.auth.dto.OnlineUserDto;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

@@ -18,6 +18,7 @@
         <module>dynamo-commons-swagger</module>
         <module>dynamo-commons-redis</module>
         <module>dynamo-commons-jackson</module>
+        <module>dynamo-commons-exception-handler</module>
     </modules>
 
     <dependencyManagement>

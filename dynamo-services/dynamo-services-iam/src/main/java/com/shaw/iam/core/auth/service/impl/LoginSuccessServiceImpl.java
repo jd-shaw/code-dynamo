@@ -9,6 +9,7 @@ import com.shaw.auth.entity.AuthInfoResult;
 import com.shaw.auth.service.LoginSuccessService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**
  * 登录成功处理
@@ -16,7 +17,7 @@ import lombok.RequiredArgsConstructor;
  * @author shaw
  * @date 2023/06/20
  */
-@Component
+@Service
 @RequiredArgsConstructor
 public class LoginSuccessServiceImpl implements LoginSuccessService {
 
