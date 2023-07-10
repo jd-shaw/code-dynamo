@@ -127,31 +127,6 @@ public abstract class StringUtils extends org.apache.commons.lang3.StringUtils {
 	}
 
 	/**
-	 * @param str
-	 * @return
-	 * @throws
-	 * @Title: spilt
-	 * @Description: 将含有逗号的字符串以逗号分隔并加上单引号
-	 * @author: tianqinghao
-	 * @date: 2020年8月21日 下午5:53:10
-	 * @return: String
-	 */
-	public String spilt(String str) {
-		StringBuffer sb = new StringBuffer();
-		String[] temp = str.split(",");
-		for (int i = 0; i < temp.length; i++) {
-			if (!"".equals(temp[i]) && temp[i] != null)
-				sb.append("'" + temp[i] + "',");
-		}
-		String result = sb.toString();
-		String tp = result.substring(result.length() - 1, result.length());
-		if (",".equals(tp))
-			return result.substring(0, result.length() - 1);
-		else
-			return result;
-	}
-
-	/**
 	 * 格式化文本, {} 表示占位符<br>
 	 * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
 	 * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
