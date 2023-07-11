@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DynamoCommonsSpringApplication {
+public class SpringConfigApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DynamoCommonsSpringApplication.class, args);
+		SpringApplication.run(SpringConfigApplication.class, args);
 	}
 
 }
