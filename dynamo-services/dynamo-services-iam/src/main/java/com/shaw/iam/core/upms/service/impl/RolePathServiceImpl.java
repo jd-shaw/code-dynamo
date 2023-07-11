@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shaw.auth.util.SecurityUtil;
-import com.shaw.commons.annotation.CountTime;
+import com.shaw.commons.annotation.TimeConsuming;
 import com.shaw.commons.utils.ResultConvertUtil;
 import com.shaw.iam.code.CachingCode;
 import com.shaw.iam.core.upms.dao.RolePathDao;
@@ -37,7 +37,7 @@ public class RolePathServiceImpl implements RolePathService {
 	@Override
 	@Transactional
 	@CacheEvict(value = { CachingCode.USER_PATH }, allEntries = true)
-	@CountTime
+	@TimeConsuming
 	public void addRolePath(String roleId, List<String> permissionIds) {
 		// 先删后增
 		List<RolePath> rolePaths = getRolePathDao().findByRoleId(roleId);

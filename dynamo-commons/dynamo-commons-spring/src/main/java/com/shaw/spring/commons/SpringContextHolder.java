@@ -1,4 +1,4 @@
-package com.geeko.erp.core.common;
+package com.shaw.spring.commons;
 
 import java.util.Map;
 
@@ -12,9 +12,9 @@ import org.springframework.util.ConcurrentReferenceHashMap.ReferenceType;
 
 /**
  * Spring 上下文的工具类
- * 
- * @author gang.liu
- * @date 2015-2-4
+ *
+ * @author shaw
+ * @date 2023/7/11
  */
 public class SpringContextHolder implements ApplicationContextAware {
 
@@ -29,9 +29,9 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 实现ApplicationContextAware接口的回调方法，设置上下文环境
-	 * 
+	 *
 	 * @param applicationContext
-	 * @throws org.springframework.beans.BeansException
+	 * @throws BeansException
 	 */
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		if (applicationContext == null)
@@ -56,10 +56,10 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 获取对象
-	 * 
+	 *
 	 * @param name
 	 * @return Object 一个以所给名字注册的bean的实例
-	 * @throws org.springframework.beans.BeansException
+	 * @throws BeansException
 	 */
 	public static <T> T getBean(String name) throws BeansException {
 		return getBean(name, true);
@@ -81,10 +81,10 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 获取类型为requiredType的对象
-	 * 
+	 *
 	 * @param clz
 	 * @return
-	 * @throws org.springframework.beans.BeansException
+	 * @throws BeansException
 	 */
 	public static <T> T getBean(Class<T> clz) throws BeansException {
 		return getBean(clz, true);
@@ -124,7 +124,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 如果BeanFactory包含一个与所给名称匹配的bean定义，则返回true
-	 * 
+	 *
 	 * @param name
 	 * @return boolean
 	 */
@@ -135,10 +135,10 @@ public class SpringContextHolder implements ApplicationContextAware {
 	/**
 	 * 判断以给定名字注册的bean定义是一个singleton还是一个prototype。
 	 * 如果与给定名字相应的bean定义没有被找到，将会抛出一个异常（NoSuchBeanDefinitionException）
-	 * 
+	 *
 	 * @param name
 	 * @return boolean
-	 * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+	 * @throws NoSuchBeanDefinitionException
 	 */
 	public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
 		return getApplicationContext().isSingleton(name);
@@ -147,7 +147,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 	/**
 	 * @param name
 	 * @return Class 注册对象的类型
-	 * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+	 * @throws NoSuchBeanDefinitionException
 	 */
 	public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
 		return getApplicationContext().getType(name);
@@ -155,7 +155,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 根据bean类型获取注册的bean的名字
-	 * 
+	 *
 	 * @param type
 	 * @return
 	 * @throws NoSuchBeanDefinitionException
@@ -166,7 +166,7 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 根据bean实例获取注册的bean的名字
-	 * 
+	 *
 	 * @param bean
 	 * @return
 	 * @throws NoSuchBeanDefinitionException
@@ -183,10 +183,10 @@ public class SpringContextHolder implements ApplicationContextAware {
 
 	/**
 	 * 如果给定的bean名字在bean定义中有别名，则返回这些别名
-	 * 
+	 *
 	 * @param name
 	 * @return
-	 * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+	 * @throws NoSuchBeanDefinitionException
 	 */
 	public static String[] getAliases(String name) throws NoSuchBeanDefinitionException {
 		return getApplicationContext().getAliases(name);
