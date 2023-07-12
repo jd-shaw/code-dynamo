@@ -10,8 +10,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.shaw.sys.core.service.CaptchaService;
-import com.shaw.utils.RandomUIDUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -24,6 +22,7 @@ import org.springframework.util.StringUtils;
 
 import com.shaw.auth.util.PasswordEncoder;
 import com.shaw.auth.util.SecurityUtil;
+import com.shaw.commons.annotation.TimeConsuming;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
@@ -42,6 +41,8 @@ import com.shaw.iam.dto.user.UserInfoDto;
 import com.shaw.iam.exception.user.UserInfoNotExistsException;
 import com.shaw.iam.param.user.UserInfoParam;
 import com.shaw.iam.param.user.UserRegisterParam;
+import com.shaw.sys.core.service.CaptchaService;
+import com.shaw.utils.RandomUIDUtils;
 import com.shaw.utils.bean.BeanUtilsBean;
 
 import lombok.Getter;
@@ -163,6 +164,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
+	@TimeConsuming
 	public LoginAfterUserInfo getLoginAfterUserInfo() {
 		UserInfo userInfo = getUserInfoDao().findById(SecurityUtil.getUserId())
 				.orElseThrow(UserInfoNotExistsException::new);

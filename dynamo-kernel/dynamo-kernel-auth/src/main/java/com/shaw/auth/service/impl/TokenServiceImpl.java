@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 
+import com.shaw.commons.annotation.TimeConsuming;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -53,6 +54,7 @@ public class TokenServiceImpl implements TokenService {
 	 * 登录
 	 */
 	@Override
+	@TimeConsuming
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		AuthInfoResult authInfoResult;
 		AuthLoginType authLoginType = getAuthLoginType(request);

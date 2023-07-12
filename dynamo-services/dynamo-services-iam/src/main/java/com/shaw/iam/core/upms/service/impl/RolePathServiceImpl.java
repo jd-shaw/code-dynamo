@@ -59,6 +59,7 @@ public class RolePathServiceImpl implements RolePathService {
 	 * 根据角色id获取关联权限id
 	 */
 	@Override
+	@TimeConsuming
 	public List<String> findIdsByRole(String roleId) {
 		List<RolePath> rolePermissions = getRolePathDao().findByRoleId(roleId);
 		return rolePermissions.stream().map(RolePath::getPermissionId).collect(Collectors.toList());

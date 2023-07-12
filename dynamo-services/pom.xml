@@ -41,6 +41,10 @@
         </dependency>
         <dependency>
             <groupId>com.shaw.commons</groupId>
+            <artifactId>dynamo-commons-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shaw.commons</groupId>
             <artifactId>dynamo-commons-exception-handler</artifactId>
         </dependency>
         <dependency>
