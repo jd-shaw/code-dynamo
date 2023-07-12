@@ -20,6 +20,7 @@
         <module>dynamo-commons-jackson</module>
         <module>dynamo-commons-exception-handler</module>
         <module>dynamo-commons-spring</module>
+        <module>dynamo-commons-cache</module>
     </modules>
 
     <dependencyManagement>
