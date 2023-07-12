@@ -62,13 +62,13 @@ public class DictionaryController {
 	}
 
 	@Operation(summary = "根据id获取")
-	@GetMapping("/findById")
+	@GetMapping("/find-by-id")
 	public ResResult<DictionaryDto> findById(String id) {
 		return Res.ok(dictionaryService.findById(id));
 	}
 
 	@Operation(summary = "查询全部")
-	@GetMapping("/findAll")
+	@GetMapping("/find-all")
 	public ResResult<List<DictionaryDto>> findAll() {
 		return Res.ok(dictionaryService.findAll());
 	}
@@ -80,13 +80,13 @@ public class DictionaryController {
 	}
 
 	@Operation(summary = "编码是否被使用")
-	@GetMapping("/existsByCode")
+	@GetMapping("/exists-by-code")
 	public ResResult<Boolean> existsByCode(String code) {
 		return Res.ok(dictionaryService.existsByCode(code));
 	}
 
 	@Operation(summary = "编码是否被使用(不包含自己)")
-	@GetMapping("/existsByCodeNotId")
+	@GetMapping("/exists-by-code-not-id")
 	public ResResult<Boolean> existsByCode(String code, String id) {
 		return Res.ok(dictionaryService.existsByCode(code, id));
 	}
