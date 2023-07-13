@@ -146,14 +146,6 @@ public class DictionaryItemServiceImpl implements DictionaryItemService {
 			public Predicate toPredicate(Root<DictionaryItem> root, CriteriaQuery<?> criteriaQuery,
 					CriteriaBuilder criteriaBuilder) {
 				List<Predicate> predicateList = new ArrayList<>();
-				if (StringUtils.hasLength(clientParam.getCode())) {
-					predicateList.add(
-							criteriaBuilder.like(root.get("code").as(String.class), "%" + clientParam.getCode() + "%"));
-				}
-				if (StringUtils.hasLength(clientParam.getName())) {
-					predicateList.add(
-							criteriaBuilder.like(root.get("name").as(String.class), "%" + clientParam.getName() + "%"));
-				}
 				return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
 			}
 		};
