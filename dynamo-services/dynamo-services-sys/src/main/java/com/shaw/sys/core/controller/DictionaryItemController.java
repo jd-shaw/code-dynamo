@@ -39,6 +39,7 @@ public class DictionaryItemController {
 	@Operation(summary = "添加字典项（返回字典项对象）")
 	@PostMapping("/add")
 	public ResResult<DictionaryItemDto> add(@RequestBody DictionaryItemParam param) {
+		// TODO
 		ValidationUtil.validateParam(param, ValidationGroup.add.class);
 		return Res.ok(getDictionaryItemService().add(param));
 	}
