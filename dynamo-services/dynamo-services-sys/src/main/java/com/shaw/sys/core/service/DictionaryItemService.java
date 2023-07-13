@@ -33,7 +33,7 @@ public interface DictionaryItemService {
 
 	List<DictionaryItemDto> findEnableByDictCode(String dictCode);
 
-	PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryItemParam clientParam);
+	PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryItemParam param);
 
 	boolean existsByCode(String code, String dictId);
 
