@@ -17,29 +17,29 @@ import java.util.List;
  */
 public interface DictionaryItemService {
 
-    @Transactional
-    DictionaryItemDto add(DictionaryItemParam param);
+	@Transactional
+	DictionaryItemDto add(DictionaryItemParam param);
 
-    @Transactional(rollbackFor = Exception.class)
-    DictionaryItemDto update(DictionaryItemParam param);
+	@Transactional(rollbackFor = Exception.class)
+	DictionaryItemDto update(DictionaryItemParam param);
 
-    void delete(String id);
+	void delete(String id);
 
-    DictionaryItemDto findById(String id);
+	DictionaryItemDto findById(String id);
 
-    List<DictionaryItem> findEnableByCode(String dictCode, String code);
+	List<DictionaryItem> findEnableByCode(String dictCode, String code);
 
-    List<DictionaryItemDto> findByDictionaryId(String dictionaryId);
+	List<DictionaryItemDto> findByDictionaryId(String dictionaryId);
 
-    List<DictionaryItemDto> findEnableByDictCode(String dictCode);
+	List<DictionaryItemDto> findEnableByDictCode(String dictCode);
 
-    PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryParam clientParam);
+	PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryItemParam clientParam);
 
-    boolean existsByCode(String code, String dictId);
+	boolean existsByCode(String code, String dictId);
 
-    boolean existsByCode(String code, String dictId, String id);
+	boolean existsByCode(String code, String dictId, String id);
 
-    List<DictionaryItemSimpleDto> findAll();
+	List<DictionaryItemSimpleDto> findAll();
 
-    List<DictionaryItemSimpleDto> findAllByEnable();
+	List<DictionaryItemSimpleDto> findAllByEnable();
 }

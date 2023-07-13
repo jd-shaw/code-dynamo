@@ -140,12 +140,13 @@ public class DictionaryItemServiceImpl implements DictionaryItemService {
 	 * 分页查询指定目录下的内容
 	 */
 	@Override
-	public PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryParam clientParam) {
+	public PageResult<DictionaryItemDto> page(PageParam pageParam, DictionaryItemParam param) {
 		Specification<DictionaryItem> specification = new Specification<DictionaryItem>() {
 			@Override
 			public Predicate toPredicate(Root<DictionaryItem> root, CriteriaQuery<?> criteriaQuery,
 					CriteriaBuilder criteriaBuilder) {
 				List<Predicate> predicateList = new ArrayList<>();
+
 				return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
 			}
 		};
