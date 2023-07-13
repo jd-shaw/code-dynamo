@@ -9,6 +9,7 @@ import javax.validation.constraints.Null;
 import com.shaw.commons.validation.ValidationGroup;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -19,6 +20,7 @@ import lombok.experimental.Accessors;
  * @date 2023/06/28
  */
 @Data
+@Builder
 @Accessors(chain = true)
 @Schema(title = "字典项参数")
 public class DictionaryItemParam implements Serializable {

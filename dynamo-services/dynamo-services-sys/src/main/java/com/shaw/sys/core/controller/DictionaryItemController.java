@@ -71,8 +71,7 @@ public class DictionaryItemController {
 	@Operation(summary = "分页查询指定字典下的字典项")
 	@GetMapping("/page-by-dictionary-id")
 	public ResResult<PageResult<DictionaryItemDto>> pageByDictionaryId(PageParam pageParam, String dictId) {
-		// TODO
-		return Res.ok(getDictionaryItemService().page(pageParam, null));
+		return Res.ok(getDictionaryItemService().page(pageParam, DictionaryItemParam.builder().dictId(dictId).build()));
 	}
 
 	@Operation(summary = "获取全部字典项")
