@@ -35,6 +35,7 @@ public class DictionaryItemController {
 
 	private final DictionaryItemService dictionaryItemService;
 
+
 	@Operation(summary = "添加字典项（返回字典项对象）")
 	@PostMapping("/add")
 	public ResResult<DictionaryItemDto> add(@RequestBody DictionaryItemParam param) {
