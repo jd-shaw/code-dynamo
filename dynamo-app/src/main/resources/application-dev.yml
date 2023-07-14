@@ -63,7 +63,7 @@ dynamo:
       keys-ttl:
         "[iam:user:path]": 5200
         "[iam:ignore:path]": 28800
-        "[iam:user:data:scope]": 28800
+        "[iam:user:perm:code]": 28800
   kernel:
     auth:
       default-password: 123456

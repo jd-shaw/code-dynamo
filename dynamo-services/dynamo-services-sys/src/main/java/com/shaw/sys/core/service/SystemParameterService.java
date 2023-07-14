@@ -4,9 +4,7 @@ import com.shaw.commons.function.SystemParamService;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.sys.core.dto.SystemParameterDto;
-import com.shaw.sys.core.param.DictionaryParam;
 import com.shaw.sys.core.param.SystemParameterParam;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 系统参数
@@ -18,7 +16,6 @@ public interface SystemParameterService extends SystemParamService {
 
 	void add(SystemParameterParam param);
 
-	@Transactional(rollbackFor = Exception.class)
 	void update(SystemParameterParam param);
 
 	PageResult<SystemParameterDto> page(PageParam pageParam, SystemParameterParam systemParameterParam);

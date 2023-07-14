@@ -10,6 +10,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,7 @@ import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.commons.utils.ResultConvertUtil;
+import com.shaw.sys.core.code.CachingCode;
 import com.shaw.sys.core.dao.SystemParameterDao;
 import com.shaw.sys.core.dto.SystemParameterDto;
 import com.shaw.sys.core.entity.SystemParameter;
@@ -123,6 +125,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 	 * 根据键名获取键值
 	 */
 	@Override
+	@Cacheable(value = CachingCode.SYSTEM_PARAM, key = "#key")
 	public String findByParamKey(String key) {
 		val param = getSystemParameterDao().findByParamKey(key).orElseThrow(DataNotExistException::new);
 		if (Objects.equals(param.getEnable(), false)) {
