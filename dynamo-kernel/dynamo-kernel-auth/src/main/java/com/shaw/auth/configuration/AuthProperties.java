@@ -17,7 +17,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "dynamo.starter.auth")
+@ConfigurationProperties(prefix = "dynamo.kernel.auth")
 public class AuthProperties {
 
 	/** 不进行鉴权的路径 */

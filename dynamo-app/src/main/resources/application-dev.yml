@@ -56,7 +56,15 @@ dynamo:
       # 显示详细异常
       show-full-message: true
     # 认证
-  starter:
+    cache:
+      # 默认超时时间 30分钟
+      default-ttl: 1800
+      # 对Key设置超时间 (秒)
+      keys-ttl:
+        "[iam:user:path]": 5200
+        "[iam:ignore:path]": 28800
+        "[iam:user:data:scope]": 28800
+  kernel:
     auth:
       default-password: 123456
       ignore-urls:
