@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.shaw.utils.RandomUIDUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.quartz.Trigger;
 import org.springframework.beans.BeanUtils;
@@ -61,6 +62,7 @@ public class QuartzJobServiceImpl implements QuartzJobService {
 	public void add(QuartzJobParam param) {
 		QuartzJob quartzJob = QuartzJob.init(param);
 		quartzJob.setState(QuartzJobCode.STOP);
+		quartzJob.setId(RandomUIDUtils.getUID());
 		getQuartzJobDao().save(quartzJob);
 	}
 
