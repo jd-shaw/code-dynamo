@@ -2,6 +2,8 @@ package com.shaw.iam.core.upms.service.impl;
 
 import java.util.List;
 
+import com.shaw.auth.util.SecurityUtil;
+import com.shaw.utils.RandomUIDUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +34,9 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 		if (CollectionUtils.isNotEmpty(roleMenus)) {
 			List<RoleMenu> menus = Lists.newArrayListWithCapacity(roleMenus.size());
 			for (RoleMenuParam roleMenu : roleMenus) {
-				menus.add(RoleMenu.init(roleMenu));
+				RoleMenu menu = RoleMenu.init(roleMenu);
+				menu.set(RandomUIDUtils.getUUID(), SecurityUtil.getUserIdOrDefaultId());
+				menus.add(menu);
 			}
 			getRoleMenuDao().saveAll(menus);
 		}

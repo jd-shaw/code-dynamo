@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 import lombok.experimental.Accessors;
 
 /**
@@ -26,12 +24,6 @@ public class BaseDomain implements Serializable {
 	protected String createBy;
 	protected String updateBy;
 	protected int version;
-
-	public static interface BaseView {
-	}
-
-	public static interface BaseDomainView extends BaseView {
-	}
 
 	public BaseDomain() {
 		Date nowTime = new Date();
@@ -59,21 +51,19 @@ public class BaseDomain implements Serializable {
 	}
 
 	@Transient
-	public void setUpdateByandDate(String id, String createBy) {
+	public void setUpdateByAndDate(String id, String createBy) {
 		this.id = id;
 		this.updateBy = createBy;
-		Date nowTime = new Date();
-		this.updateDate = nowTime;
+		this.updateDate = new Date();
 	}
 
-	public void setUpdateByandDate(String createBy) {
+	@Transient
+	public void setUpdateByAndDate(String createBy) {
 		this.updateBy = createBy;
-		Date nowTime = new Date();
-		this.updateDate = nowTime;
+		this.updateDate = new Date();
 	}
 
 	@Id
-	@JsonView(BaseView.class)
 	@Column(name = "id", length = 36, unique = true)
 	public String getId() {
 		return id;
@@ -83,7 +73,6 @@ public class BaseDomain implements Serializable {
 		this.id = id;
 	}
 
-	@JsonView(BaseDomainView.class)
 	@Column(name = "create_date", insertable = true)
 	public Date getCreateDate() {
 		return createDate;
@@ -93,7 +82,6 @@ public class BaseDomain implements Serializable {
 		this.createDate = createDate;
 	}
 
-	@JsonView(BaseDomainView.class)
 	@Column(name = "update_date", insertable = true, updatable = true)
 	public Date getUpdateDate() {
 		return updateDate;
@@ -103,7 +91,6 @@ public class BaseDomain implements Serializable {
 		this.updateDate = updateDate;
 	}
 
-	@JsonView(BaseDomainView.class)
 	@Column(name = "create_by", length = 36, insertable = true)
 	public String getCreateBy() {
 		return createBy;
@@ -113,7 +100,6 @@ public class BaseDomain implements Serializable {
 		this.createBy = createBy;
 	}
 
-	@JsonView(BaseDomainView.class)
 	@Column(name = "update_by", length = 36, insertable = true, updatable = true)
 	public String getUpdateBy() {
 		return updateBy;
@@ -123,7 +109,6 @@ public class BaseDomain implements Serializable {
 		this.updateBy = updateBy;
 	}
 
-	@JsonView(BaseDomainView.class)
 	@Column(name = "version", columnDefinition = "int default 0")
 	public int getVersion() {
 		return version;
