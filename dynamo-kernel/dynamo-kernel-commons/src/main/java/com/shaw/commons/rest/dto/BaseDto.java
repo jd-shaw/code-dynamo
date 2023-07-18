@@ -25,10 +25,10 @@ public class BaseDto implements Serializable {
 	private String id;
 
 	@Schema(description = "创建时间")
-	private LocalDateTime createTime;
+	private LocalDateTime createDate;
 
 	@Schema(description = "最后修改时间")
-	private LocalDateTime lastModifiedTime;
+	private LocalDateTime updateDate;
 
 	@Schema(description = "版本号")
 	private Integer version;
