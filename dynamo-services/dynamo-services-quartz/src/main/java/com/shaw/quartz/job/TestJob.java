@@ -1,5 +1,8 @@
 package com.shaw.quartz.job;
 
+import java.util.concurrent.TimeUnit;
+
+import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -13,9 +16,17 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Component
+@DisallowConcurrentExecution
 public class TestJob implements Job {
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		log.info("定时任务执行了。。。");
+		try {
+			TimeUnit.SECONDS.sleep(30);
+			log.info("定时任务执行了。。。");
+			TimeUnit.SECONDS.sleep(30);
+			log.info("定时任务执行结束了。。。");
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
