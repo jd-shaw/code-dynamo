@@ -6,8 +6,7 @@ import javax.persistence.Table;
 import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.iam.core.scope.convert.DataScopeDeptCovert;
 import com.shaw.iam.dto.scope.DataScopeDeptDto;
-import com.shaw.iam.dto.scope.DataScopeDto;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -27,7 +27,7 @@ import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.commons.utils.ResultConvertUtil;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.sys.core.dao.DictionaryDao;
 import com.shaw.sys.core.dao.DictionaryItemDao;
 import com.shaw.sys.core.dto.DictionaryItemDto;
@@ -37,7 +37,6 @@ import com.shaw.sys.core.entity.DictionaryItem;
 import com.shaw.sys.core.exception.DictItemAlreadyExistedException;
 import com.shaw.sys.core.exception.DictItemNotExistedException;
 import com.shaw.sys.core.param.DictionaryItemParam;
-import com.shaw.sys.core.param.DictionaryParam;
 import com.shaw.sys.core.service.DictionaryItemService;
 
 import lombok.AllArgsConstructor;

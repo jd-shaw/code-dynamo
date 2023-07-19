@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.shaw.commons.function.EntityBaseFunction;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.sys.core.covert.DictionaryItemCovert;
 import com.shaw.sys.core.dto.DictionaryItemDto;
 import com.shaw.sys.core.dto.DictionaryItemSimpleDto;

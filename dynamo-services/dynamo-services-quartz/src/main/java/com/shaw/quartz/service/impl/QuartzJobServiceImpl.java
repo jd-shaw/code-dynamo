@@ -26,7 +26,7 @@ import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
 import com.shaw.commons.rest.param.PageParam;
 import com.shaw.commons.utils.ResultConvertUtil;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.quartz.code.QuartzJobCode;
 import com.shaw.quartz.dao.QuartzJobDao;
 import com.shaw.quartz.dto.QuartzJobDto;

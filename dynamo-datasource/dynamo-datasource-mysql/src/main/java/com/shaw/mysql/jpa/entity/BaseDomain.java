@@ -1,4 +1,4 @@
-package com.shaw.mysql.jpa.po;
+package com.shaw.mysql.jpa.entity;
 
 import java.io.Serializable;
 import java.util.Date;

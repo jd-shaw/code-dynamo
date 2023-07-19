@@ -7,7 +7,7 @@ import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.iam.core.permission.convert.PermConvert;
 import com.shaw.iam.dto.permission.PermPathDto;
 import com.shaw.iam.param.permission.PermPathParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

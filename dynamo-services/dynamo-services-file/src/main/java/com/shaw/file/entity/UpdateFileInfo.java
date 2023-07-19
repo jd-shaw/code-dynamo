@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.file.convert.FileConvert;
 import com.shaw.file.dto.UpdateFileDto;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.message.convert.SiteMessageConvert;
 import com.shaw.message.dto.SiteMessageDto;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

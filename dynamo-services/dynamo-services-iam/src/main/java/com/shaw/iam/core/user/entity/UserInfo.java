@@ -16,7 +16,7 @@ import com.shaw.iam.code.UserStatusCode;
 import com.shaw.iam.core.user.convert.UserConvert;
 import com.shaw.iam.dto.user.UserInfoDto;
 import com.shaw.iam.param.user.UserInfoParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.utils.text.StringUtils;
 
 import lombok.Data;

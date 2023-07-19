@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.iam.core.user.convert.UserConvert;
 import com.shaw.iam.dto.user.UserExpandInfoDto;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

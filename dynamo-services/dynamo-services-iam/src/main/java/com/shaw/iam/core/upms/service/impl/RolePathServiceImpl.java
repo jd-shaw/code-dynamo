@@ -15,7 +15,7 @@ import com.shaw.iam.core.upms.dao.RolePathDao;
 import com.shaw.iam.core.upms.entity.RolePath;
 import com.shaw.iam.core.upms.service.RolePathService;
 import com.shaw.iam.dto.upms.RolePathDto;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.utils.RandomUIDUtils;
 
 import lombok.Getter;

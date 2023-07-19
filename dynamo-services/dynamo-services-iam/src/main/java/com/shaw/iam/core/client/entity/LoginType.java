@@ -8,7 +8,7 @@ import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.iam.core.client.convert.LoginTypeConvert;
 import com.shaw.iam.dto.client.LoginTypeDto;
 import com.shaw.iam.param.client.LoginTypeParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

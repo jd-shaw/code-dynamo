@@ -8,7 +8,7 @@ import com.shaw.iam.code.OrgCategoryCode;
 import com.shaw.iam.core.dept.convert.DeptConvert;
 import com.shaw.iam.dto.dept.DeptDto;
 import com.shaw.iam.param.dept.DeptParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

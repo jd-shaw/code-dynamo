@@ -3,7 +3,7 @@ package com.shaw.iam.core.user.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

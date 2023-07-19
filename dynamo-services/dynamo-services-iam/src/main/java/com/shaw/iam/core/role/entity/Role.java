@@ -7,7 +7,7 @@ import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.iam.core.role.convert.RoleConvert;
 import com.shaw.iam.dto.role.RoleDto;
 import com.shaw.iam.param.role.RoleParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.utils.RandomUIDUtils;
 
 import lombok.Data;

@@ -8,7 +8,7 @@ import com.shaw.iam.code.PermissionCode;
 import com.shaw.iam.core.permission.convert.PermConvert;
 import com.shaw.iam.dto.permission.PermMenuDto;
 import com.shaw.iam.param.permission.PermMenuParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

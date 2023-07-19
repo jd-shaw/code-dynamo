@@ -1,7 +1,7 @@
 package com.shaw.quartz.entity;
 
 import com.shaw.commons.function.EntityBaseFunction;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.quartz.convert.QuartzJobConvert;
 import com.shaw.quartz.dto.QuartzJobDto;
 import com.shaw.quartz.param.QuartzJobParam;

@@ -4,13 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.shaw.commons.function.EntityBaseFunction;
-import com.shaw.iam.core.permission.convert.PermConvert;
 import com.shaw.iam.core.permission.convert.RoleMenuConvert;
-import com.shaw.iam.core.permission.entity.PermMenu;
 import com.shaw.iam.dto.upms.RoleMenuDto;
-import com.shaw.iam.param.permission.PermMenuParam;
 import com.shaw.iam.param.upms.RoleMenuParam;
-import com.shaw.mysql.jpa.po.BaseDomain;
+import com.shaw.mysql.jpa.entity.BaseDomain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
