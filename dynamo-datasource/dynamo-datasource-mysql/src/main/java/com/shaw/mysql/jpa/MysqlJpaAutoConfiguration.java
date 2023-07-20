@@ -12,7 +12,7 @@ import com.shaw.mysql.jpa.dao.BaseRepositoryFactoryBean;
  */
 @ComponentScan
 @AutoConfiguration
-@EnableJpaRepositories(repositoryFactoryBeanClass = BaseRepositoryFactoryBean.class)
+//@EnableJpaRepositories(repositoryFactoryBeanClass = BaseRepositoryFactoryBean.class)
 public class MysqlJpaAutoConfiguration {
 
 }

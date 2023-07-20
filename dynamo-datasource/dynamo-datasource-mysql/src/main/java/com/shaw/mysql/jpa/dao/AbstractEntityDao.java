@@ -21,8 +21,10 @@ import com.shaw.mysql.jpa.po.PageQuery;
 import com.shaw.mysql.jpa.po.Query;
 
 import lombok.Getter;
+import org.springframework.stereotype.Repository;
 
 @Getter
+@Repository
 public abstract class AbstractEntityDao<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
 		implements EntityDao<T, ID> {
 
@@ -68,12 +70,12 @@ public abstract class AbstractEntityDao<T, ID extends Serializable> extends Simp
 		return null;
 	}
 
-	@Override
-	public long count(Query query) {
-		final Query param = query;
-		return this.count((Root<T> root, CriteriaQuery<?> cq,
-				CriteriaBuilder cb) -> new PredicateBuilder<T>(root, cq, cb, param).builder());
-	}
+//	@Override
+//	public long count(Query query) {
+//		final Query param = query;
+//		return this.count((Root<T> root, CriteriaQuery<?> cq,
+//				CriteriaBuilder cb) -> new PredicateBuilder<T>(root, cq, cb, param).builder());
+//	}
 
 	private Sort getSort(Query query) {
 		Sort.Direction direction = Sort.Direction.fromOptionalString(query.getDirection()).orElse(Sort.Direction.ASC);

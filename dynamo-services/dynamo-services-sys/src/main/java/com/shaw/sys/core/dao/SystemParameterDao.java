@@ -2,6 +2,7 @@ package com.shaw.sys.core.dao;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Repository;
 
 import com.shaw.mysql.jpa.dao.EntityDao;
@@ -14,7 +15,7 @@ import com.shaw.sys.core.entity.SystemParameter;
  * @date 2023/06/28
  */
 @Repository
-public interface SystemParameterDao extends EntityDao<SystemParameter, String> {
+public interface SystemParameterDao extends JpaRepositoryImplementation<SystemParameter, String> {
 
 	/**
 	 * 根据键名获取键值

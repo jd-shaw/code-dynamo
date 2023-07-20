@@ -4,12 +4,14 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.text.MessageFormat;
 
+import com.shaw.mysql.jpa.dao.BaseRepositoryFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * @author shaw
@@ -17,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @SpringBootApplication
+//@EnableJpaRepositories(repositoryFactoryBeanClass = BaseRepositoryFactoryBean.class)
 public class CodeDynamoApp {
 
 	public static void main(String[] args) throws UnknownHostException {

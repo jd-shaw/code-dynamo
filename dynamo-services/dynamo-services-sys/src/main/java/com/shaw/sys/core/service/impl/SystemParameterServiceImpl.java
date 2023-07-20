@@ -83,9 +83,11 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 	@Override
 	public PageResult<SystemParameterDto> page(PageQuery query) {
 		Pageable pageable = PageRequest.of(query.getPage() - 1, query.getLimit());
-		Page<SystemParameter> page = getSystemParameterDao().findAll(pageable, query);
-		return new PageResult<SystemParameterDto>().setSize(page.getSize()).setCurrent(page.getNumber())
-				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
+		//		Page<SystemParameter> page = getSystemParameterDao().findAll(pageable, query);
+		//		return new PageResult<SystemParameterDto>().setSize(page.getSize()).setCurrent(page.getNumber())
+		//				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
+
+		return null;
 	}
 
 	/**

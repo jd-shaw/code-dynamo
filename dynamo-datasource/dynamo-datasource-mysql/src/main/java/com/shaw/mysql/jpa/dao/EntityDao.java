@@ -32,6 +32,6 @@ public interface EntityDao<T, ID extends Serializable> extends JpaRepository<T, 
 	 * 查询数量
 	 *
 	 */
-	long count(@Nullable Query query);
+	//	long count(@Nullable Query query);
 
 }
