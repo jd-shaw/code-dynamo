@@ -1,30 +1,21 @@
 package com.shaw.sys.core.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import com.shaw.auth.util.SecurityUtil;
 import com.shaw.commons.exception.BaseException;
 import com.shaw.commons.exception.DataNotExistException;
 import com.shaw.commons.rest.PageResult;
-import com.shaw.commons.rest.param.PageParam;
 import com.shaw.commons.utils.ResultConvertUtil;
+import com.shaw.mysql.jpa.po.PageQuery;
 import com.shaw.sys.core.code.CachingCode;
 import com.shaw.sys.core.dao.SystemParameterDao;
 import com.shaw.sys.core.dto.SystemParameterDto;
@@ -90,25 +81,9 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 	 * 分页
 	 */
 	@Override
-	public PageResult<SystemParameterDto> page(PageParam pageParam, SystemParameterParam clientParam) {
-		Specification<SystemParameter> specification = new Specification<SystemParameter>() {
-			@Override
-			public Predicate toPredicate(Root<SystemParameter> root, CriteriaQuery<?> criteriaQuery,
-					CriteriaBuilder criteriaBuilder) {
-				List<Predicate> predicateList = new ArrayList<>();
-				if (StringUtils.hasLength(clientParam.getParamKey())) {
-					predicateList.add(criteriaBuilder.like(root.get("paramKey").as(String.class),
-							"%" + clientParam.getParamKey() + "%"));
-				}
-				if (StringUtils.hasLength(clientParam.getName())) {
-					predicateList.add(
-							criteriaBuilder.like(root.get("name").as(String.class), "%" + clientParam.getName() + "%"));
-				}
-				return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
-			}
-		};
-		Pageable pageable = PageRequest.of(pageParam.start(), pageParam.getSize());
-		Page<SystemParameter> page = getSystemParameterDao().findAll(specification, pageable);
+	public PageResult<SystemParameterDto> page(PageQuery query) {
+		Pageable pageable = PageRequest.of(query.getPage() - 1, query.getLimit());
+		Page<SystemParameter> page = getSystemParameterDao().findAll(pageable, query);
 		return new PageResult<SystemParameterDto>().setSize(page.getSize()).setCurrent(page.getNumber())
 				.setTotal(page.getTotalPages()).setRecords(ResultConvertUtil.dtoListConvert(page.getContent()));
 	}

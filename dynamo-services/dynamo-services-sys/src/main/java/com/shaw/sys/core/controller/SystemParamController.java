@@ -12,6 +12,7 @@ import com.shaw.commons.utils.ValidationUtil;
 import com.shaw.commons.validation.ValidationGroup;
 import com.shaw.sys.core.dto.SystemParameterDto;
 import com.shaw.sys.core.param.SystemParameterParam;
+import com.shaw.sys.core.query.SystemParameterQuery;
 import com.shaw.sys.core.service.SystemParameterService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -54,8 +55,8 @@ public class SystemParamController {
 	@Operation(summary = "分页")
 	@GetMapping("/page")
 	public ResResult<PageResult<SystemParameterDto>> page(@ParameterObject PageParam pageParam,
-			@ParameterObject SystemParameterParam param) {
-		return Res.ok(getSystemParameterService().page(pageParam, param));
+			@ParameterObject SystemParameterQuery param) {
+		return Res.ok(getSystemParameterService().page(param));
 	}
 
 	@Operation(summary = "获取单条")

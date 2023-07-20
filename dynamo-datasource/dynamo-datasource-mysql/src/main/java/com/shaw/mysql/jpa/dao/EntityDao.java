@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -19,18 +20,18 @@ public interface EntityDao<T, ID extends Serializable> extends JpaRepository<T, 
 	 * 查询list
 	 *
 	 */
-	List<T> search(@Nullable Query query);
+	List<T> findAll(@Nullable Query query);
 
 	/**
 	 * 查询page
 	 *
 	 */
-	Page<T> search(@Nullable PageQuery pageQuery);
+	Page<T> findAll(Pageable pageable, @Nullable PageQuery pageQuery);
 
 	/**
 	 * 查询数量
 	 *
 	 */
-	long countSearch(@Nullable Query query);
+	long count(@Nullable Query query);
 
 }

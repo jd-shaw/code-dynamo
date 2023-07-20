@@ -2,9 +2,10 @@ package com.shaw.sys.core.service;
 
 import com.shaw.commons.function.SystemParamService;
 import com.shaw.commons.rest.PageResult;
-import com.shaw.commons.rest.param.PageParam;
+import com.shaw.mysql.jpa.po.PageQuery;
 import com.shaw.sys.core.dto.SystemParameterDto;
 import com.shaw.sys.core.param.SystemParameterParam;
+import com.shaw.sys.core.query.SystemParameterQuery;
 
 /**
  * 系统参数
@@ -18,7 +19,7 @@ public interface SystemParameterService extends SystemParamService {
 
 	void update(SystemParameterParam param);
 
-	PageResult<SystemParameterDto> page(PageParam pageParam, SystemParameterParam systemParameterParam);
+	PageResult<SystemParameterDto> page(PageQuery query);
 
 	SystemParameterDto findById(String id);
 

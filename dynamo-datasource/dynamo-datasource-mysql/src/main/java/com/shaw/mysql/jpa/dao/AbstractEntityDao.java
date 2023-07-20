@@ -10,21 +10,19 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import lombok.Getter;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-import org.springframework.stereotype.Repository;
 
 import com.shaw.mysql.jpa.commons.PredicateBuilder;
 import com.shaw.mysql.jpa.po.PageQuery;
 import com.shaw.mysql.jpa.po.Query;
 
+import lombok.Getter;
+
 @Getter
-@Repository
 public abstract class AbstractEntityDao<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
 		implements EntityDao<T, ID> {
 
@@ -39,7 +37,7 @@ public abstract class AbstractEntityDao<T, ID extends Serializable> extends Simp
 	}
 
 	@Override
-	public List<T> search(Query query) {
+	public List<T> findAll(Query query) {
 		if (query != null) {
 			final Query param = query;
 			if (query.hasSort()) {
@@ -56,15 +54,14 @@ public abstract class AbstractEntityDao<T, ID extends Serializable> extends Simp
 	}
 
 	@Override
-	public Page<T> search(PageQuery pageQuery) {
+	public Page<T> findAll(Pageable pageable, PageQuery pageQuery) {
 		if (pageQuery != null) {
 			final PageQuery param = pageQuery;
-			Pageable pageable = null;
-			if (pageQuery.hasSort()) {
-				pageable = PageRequest.of(pageQuery.getPage() - 1, pageQuery.getLimit(), getSort(pageQuery));
-			} else {
-				pageable = PageRequest.of(pageQuery.getPage() - 1, pageQuery.getLimit());
-			}
+			//			Pageable pageable = pageQuery.getPageable();
+			//			if (pageQuery.hasSort()) {
+			//				pageable = PageRequest.of(pageQuery.getPageable().getPageNumber(),
+			//						pageQuery.getPageable().getPageSize(), getSort(pageQuery));
+			//			}
 			return findAll((Root<T> root, CriteriaQuery<?> cq,
 					CriteriaBuilder cb) -> new PredicateBuilder<T>(root, cq, cb, param).builder(), pageable);
 		}
@@ -72,7 +69,7 @@ public abstract class AbstractEntityDao<T, ID extends Serializable> extends Simp
 	}
 
 	@Override
-	public long countSearch(Query query) {
+	public long count(Query query) {
 		final Query param = query;
 		return this.count((Root<T> root, CriteriaQuery<?> cq,
 				CriteriaBuilder cb) -> new PredicateBuilder<T>(root, cq, cb, param).builder());
