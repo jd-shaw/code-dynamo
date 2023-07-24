@@ -1,5 +1,6 @@
 package com.shaw.quartz;
 
+import org.quartz.DisallowConcurrentExecution;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,6 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan
 @EnableJpaRepositories
 @ComponentScan
+@DisallowConcurrentExecution
 public class QuartzJobAutoConfiguration {
 
 }

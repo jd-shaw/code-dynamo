@@ -48,6 +48,7 @@ spring:
             threadCount: 10
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
+
 # 自定义配置信息
 dynamo:
   common:

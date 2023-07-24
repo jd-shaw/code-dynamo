@@ -22,10 +22,6 @@ public class LocalDateTimeUtil {
         return ge(now, start) && le(now, end);
     }
 
-    public static Duration between(LocalDateTime startTimeInclude, LocalDateTime endTimeExclude) {
-        return between(startTimeInclude, endTimeExclude);
-    }
-
     public static Duration between(Temporal startTimeInclude, Temporal endTimeExclude) {
         return Duration.between(startTimeInclude, endTimeExclude);
     }
