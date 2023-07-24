@@ -45,10 +45,10 @@ spring:
             instanceName: quartzScheduler
             instanceId: AUTO
           threadPool:
-            threadCount: 10
+            threadCount: 20
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
-
+    startup-delay: 1
 # 自定义配置信息
 dynamo:
   common:
