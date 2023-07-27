@@ -49,18 +49,17 @@ public class QuartzJobScheduler {
 	 */
 	public void add(String id, String jobClassName, String cron, String parameter) {
 		try {
-			String idStr = String.valueOf(id);
 			// 启动调度器
 			scheduler.start();
 			// 构建job信息
-			JobDetail jobDetail = JobBuilder.newJob(getJobClass(jobClassName)).withIdentity(idStr)
+			JobDetail jobDetail = JobBuilder.newJob(getJobClass(jobClassName)).withIdentity(id)
 					.usingJobData(PARAMETER, parameter).build();
 
 			// 表达式调度构建器(即任务执行的时间)
 			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cron);
 
 			// 按新的cronExpression表达式构建一个新的trigger
-			CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(idStr).withSchedule(scheduleBuilder).build();
+			CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(id).withSchedule(scheduleBuilder).build();
 
 			scheduler.scheduleJob(jobDetail, trigger);
 		} catch (SchedulerException e) {
@@ -74,10 +73,9 @@ public class QuartzJobScheduler {
 	 */
 	public void delete(String id) {
 		try {
-			String idStr = String.valueOf(id);
-			scheduler.pauseTrigger(TriggerKey.triggerKey(idStr));
-			scheduler.unscheduleJob(TriggerKey.triggerKey(idStr));
-			scheduler.deleteJob(JobKey.jobKey(idStr));
+			scheduler.pauseTrigger(TriggerKey.triggerKey(id));
+			scheduler.unscheduleJob(TriggerKey.triggerKey(id));
+			scheduler.deleteJob(JobKey.jobKey(id));
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			throw new BaseException("删除定时任务失败");
