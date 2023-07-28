@@ -34,17 +34,24 @@ spring:
   quartz:
     # 持久化方式
     job-store-type: jdbc
+    # 默认为false， 用于设定是否等待任务执行完毕后容器才会关闭。
+    wait-for-jobs-to-complete-on-shutdown: false
     #定时任务启动开关，true-开  false-关
     auto-startup: true
-    #启动时更新己存在的Job
+    #启动时更新己存在的Job, 默认为false， 配置的JOB是否覆盖已经存在的JOB信息
     overwrite-existing-jobs: true
     properties:
       org:
         quartz:
           scheduler:
+            # 集群名，区分同一系统的不同实例，若使用集群功能，则每一个实例都要使用相同的名字
             instanceName: quartzScheduler
+            # 若是集群下，每个instanceId必须唯一
             instanceId: AUTO
           threadPool:
+            #一般使用这个便可
+            class: org.quartz.simpl.SimpleThreadPool
+            #线程数量，不会动态增加
             threadCount: 20
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
