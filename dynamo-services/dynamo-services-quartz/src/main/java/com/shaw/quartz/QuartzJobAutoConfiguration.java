@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan
 @EnableJpaRepositories
 @ComponentScan
-@DisallowConcurrentExecution
 public class QuartzJobAutoConfiguration {
 
 }
