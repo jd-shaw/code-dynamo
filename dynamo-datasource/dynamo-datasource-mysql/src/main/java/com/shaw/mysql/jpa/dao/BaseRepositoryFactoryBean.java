@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.support.*;
 import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
+import org.springframework.lang.NonNullApi;
 import org.springframework.util.Assert;
 
 public class BaseRepositoryFactoryBean<T extends SimpleJpaRepository<S, ID>, S, ID extends Serializable>
@@ -40,14 +41,14 @@ public class BaseRepositoryFactoryBean<T extends SimpleJpaRepository<S, ID>, S, 
 		 * 设置=实现类是BaseRepositoryImpl
 		 */
 		@Override
+
 		protected JpaRepositoryImplementation<?, ?> getTargetRepository(RepositoryInformation information,
 				EntityManager entityManager) {
 			JpaEntityInformation<?, Serializable> entityInformation = this
 					.getEntityInformation(information.getDomainType());
-			Object repository = this.getTargetRepositoryViaReflection(information,
-					new Object[] { entityInformation, entityManager });
+			Object repository = this.getTargetRepositoryViaReflection(information, entityInformation, entityManager);
 			Assert.isInstanceOf(AbstractEntityDao.class, repository);
-			return (JpaRepositoryImplementation) repository;
+			return (JpaRepositoryImplementation<?, ?>) repository;
 		}
 
 		/**
