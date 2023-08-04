@@ -11,7 +11,11 @@
     <packaging>pom</packaging>
     <artifactId>dynamo-services</artifactId>
     <groupId>com.shaw.services</groupId>
-    <version>1.0.0</version>
+    <version>${dynamo.services.version}</version>
+
+    <properties>
+        <dynamo.services.version>1.0.0</dynamo.services.version>
+    </properties>
 
     <modules>
         <module>dynamo-services-iam</module>
@@ -21,6 +25,7 @@
         <module>dynamo-services-dataperm</module>
         <module>dynamo-services-message</module>
         <module>dynamo-services-quartz</module>
+        <module>dynamo-services-monitor</module>
     </modules>
 
     <dependencyManagement>

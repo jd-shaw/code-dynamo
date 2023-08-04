@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
     <groupId>com.shaw.dynamo</groupId>
     <artifactId>code-dynamo</artifactId>
-    <version>1.0.0</version>
+    <version>${dynamo.version}</version>
 
     <modules>
         <module>dynamo-app</module>
@@ -23,6 +23,7 @@
     </modules>
 
     <properties>
+        <dynamo.version>1.0.0</dynamo.version>
         <dynamo.datasource.mysql.version>1.0.0</dynamo.datasource.mysql.version>
         <dynamo.service.iam.version>1.0.0</dynamo.service.iam.version>
         <dynamo.service.file.version>1.0.0</dynamo.service.file.version>
