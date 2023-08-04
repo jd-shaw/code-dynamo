@@ -61,6 +61,7 @@
         <redisson.version>3.21.1</redisson.version>
         <knife4j.version>4.0.0</knife4j.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
+        <oshi.version>6.4.0</oshi.version>
 
     </properties>
 

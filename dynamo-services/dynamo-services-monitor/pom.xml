@@ -14,6 +14,17 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>${oshi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shaw.kernel</groupId>
+            <artifactId>dynamo-kernel-commons</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
