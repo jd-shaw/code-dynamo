@@ -1,18 +1,18 @@
 package com.shaw.iam.core.scope.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import com.shaw.commons.function.EntityBaseFunction;
+import com.shaw.iam.core.dept.entity.Dept;
 import com.shaw.iam.core.scope.convert.DataScopeDeptCovert;
 import com.shaw.iam.dto.scope.DataScopeDeptDto;
 import com.shaw.mysql.jpa.entity.BaseDomain;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
+
+import javax.persistence.*;
 
 /**
  * 数据范围部门关联配置
@@ -20,23 +20,32 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/20
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
+@Entity
+@SuperBuilder
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name = "iam_data_scope_dept")
-public class DataScopeDept extends BaseDomain  implements EntityBaseFunction<DataScopeDeptDto> {
+@EqualsAndHashCode(callSuper = true)
+public class DataScopeDept extends BaseDomain implements EntityBaseFunction<DataScopeDeptDto> {
 
-	/** 数据范围id */
-	private String dataScopeId;
+    /**
+     * 数据范围id
+     */
+    @ManyToOne
+    @JoinColumn(name = "data_scope_id")
+    private DataScope dataScope;
 
-	/** 部门id */
-	private String deptId;
+    /**
+     * 部门id
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
 
-	@Override
-	public DataScopeDeptDto toDto() {
-		return DataScopeDeptCovert.CONVERT.convert(this);
-	}
+    @Override
+    public DataScopeDeptDto toDto() {
+        return DataScopeDeptCovert.CONVERT.convert(this);
+    }
 }

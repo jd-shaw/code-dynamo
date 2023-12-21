@@ -8,6 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -27,52 +30,71 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/20
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "iam_client")
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 public class Client extends BaseDomain implements EntityBaseFunction<ClientDto> {
 
-	/** 编码 */
-	private String code;
+    /**
+     * 编码
+     */
+    private String code;
 
-	/** 名称 */
-	private String name;
+    /**
+     * 名称
+     */
+    private String name;
 
-	/** 是否系统内置 */
-	@Column(columnDefinition = "int default 0")
-	private int isSystem;
+    /**
+     * 是否系统内置
+     */
+    @Column(columnDefinition = "int default 0")
+    private int isSystem;
 
-	/** 是否可用 */
-	@Column(columnDefinition = "int default 0")
-	private int enable;
+    /**
+     * 是否可用
+     */
+    @Column(columnDefinition = "int default 0")
+    private int enable;
 
-	/** 关联登录方式 */
-	private String loginTypeIds;
+    /**
+     * 关联登录方式
+     */
+    private String loginTypeIds;
 
-	/** 描述 */
-	private String description;
+    /**
+     * 描述
+     */
+    private String description;
 
-	/** 创建对象 */
-	public static Client init(ClientParam in) {
-		Client client = ClientConvert.CONVERT.convert(in);
-		if (CollectionUtils.isNotEmpty(in.getLoginTypeIdList())) {
-			String loginTypeIds = String.join(",", in.getLoginTypeIdList());
-			client.setLoginTypeIds(loginTypeIds);
-		}
-		return client;
-	}
+    /**
+     * 创建对象
+     */
+    public static Client init(ClientParam in) {
+        Client client = ClientConvert.CONVERT.convert(in);
+        if (CollectionUtils.isNotEmpty(in.getLoginTypeIdList())) {
+            String loginTypeIds = String.join(",", in.getLoginTypeIdList());
+            client.setLoginTypeIds(loginTypeIds);
+        }
+        return client;
+    }
 
-	/** 转换成dto */
-	@Override
-	public ClientDto toDto() {
-		ClientDto client = ClientConvert.CONVERT.convert(this);
-		if (StringUtils.isNotBlank(this.getLoginTypeIds())) {
-			List<String> collect = Arrays.stream(this.getLoginTypeIds().split(",")).collect(Collectors.toList());
-			client.setLoginTypeIdList(collect);
-		}
-		return client;
-	}
+    /**
+     * 转换成dto
+     */
+    @Override
+    public ClientDto toDto() {
+        ClientDto client = ClientConvert.CONVERT.convert(this);
+        if (StringUtils.isNotBlank(this.getLoginTypeIds())) {
+            List<String> collect = Arrays.stream(this.getLoginTypeIds().split(",")).collect(Collectors.toList());
+            client.setLoginTypeIdList(collect);
+        }
+        return client;
+    }
 
 }

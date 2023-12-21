@@ -1,15 +1,14 @@
 package com.shaw.iam.core.scope.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import com.shaw.mysql.jpa.entity.BaseDomain;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
+
+import javax.persistence.*;
 
 /**
  * 数据范围用户关联配置
@@ -17,19 +16,26 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/20
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
+@Entity
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
 @Table(name = "iam_data_scope_user")
+@EqualsAndHashCode(callSuper = true)
 public class DataScopeUser extends BaseDomain {
 
-	/** 数据范围id */
-	private String dataScopeId;
+    /**
+     * 数据范围id
+     */
+    @ManyToOne
+    @JoinColumn(name = "data_scope_id")
+    private DataScope dataScope;
 
-	/** 用户id */
-	private String userId;
+    /**
+     * 用户id
+     */
+    private String userId;
 
 }

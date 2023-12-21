@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 角色权限关联关系
@@ -20,12 +21,13 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/20
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-@Accessors(chain = true)
 @Entity
-@Table(name = "iam_role_menu")
+@SuperBuilder
 @NoArgsConstructor
+@Accessors(chain = true)
+@Table(name = "iam_role_menu")
+@EqualsAndHashCode(callSuper = true)
 public class RoleMenu extends BaseDomain implements EntityBaseFunction<RoleMenuDto> {
 
 	/**

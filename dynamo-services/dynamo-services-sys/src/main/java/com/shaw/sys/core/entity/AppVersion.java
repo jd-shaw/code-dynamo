@@ -9,9 +9,12 @@ import com.shaw.sys.core.covert.AppVersionConvert;
 import com.shaw.sys.core.dto.AppVersionDto;
 import com.shaw.sys.core.param.AppVersionParam;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * App版本
@@ -19,11 +22,14 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/28
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "sys_app_version")
+@EqualsAndHashCode(callSuper = true)
 public class AppVersion extends BaseDomain implements EntityBaseFunction<AppVersionDto> {
 
 	/** app版本 */

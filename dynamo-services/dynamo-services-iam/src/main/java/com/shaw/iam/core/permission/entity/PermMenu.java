@@ -10,9 +10,12 @@ import com.shaw.iam.dto.permission.PermMenuDto;
 import com.shaw.iam.param.permission.PermMenuParam;
 import com.shaw.mysql.jpa.entity.BaseDomain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 权限配置
@@ -20,11 +23,14 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/20
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-@Accessors(chain = true)
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "iam_perm_menu")
+@EqualsAndHashCode(callSuper = true)
 public class PermMenu extends BaseDomain implements EntityBaseFunction<PermMenuDto> {
 
 	/** 父id */

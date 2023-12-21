@@ -8,14 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @author shaw
  * @date 2023/06/20
  */
+@SuperBuilder
 @Accessors(chain = true)
 @MappedSuperclass
+@AllArgsConstructor
 public class BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;

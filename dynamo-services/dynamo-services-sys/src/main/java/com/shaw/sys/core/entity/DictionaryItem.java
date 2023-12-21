@@ -10,9 +10,12 @@ import com.shaw.sys.core.dto.DictionaryItemDto;
 import com.shaw.sys.core.dto.DictionaryItemSimpleDto;
 import com.shaw.sys.core.param.DictionaryItemParam;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 字典项
@@ -23,6 +26,9 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "sys_dict_item")
 public class DictionaryItem extends BaseDomain implements EntityBaseFunction<DictionaryItemDto> {

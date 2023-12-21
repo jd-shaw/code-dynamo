@@ -9,8 +9,11 @@ import com.shaw.sys.core.covert.DictionaryConvert;
 import com.shaw.sys.core.dto.DictionaryDto;
 import com.shaw.sys.core.param.DictionaryParam;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 字典
@@ -20,32 +23,45 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "sys_dict")
 public class Dictionary extends BaseDomain implements EntityBaseFunction<DictionaryDto> {
 
-	/** 名称 */
-	private String name;
+    /**
+     * 名称
+     */
+    private String name;
 
-	/** 分类标签 */
-	private String groupTag;
+    /**
+     * 分类标签
+     */
+    private String groupTag;
 
-	/** 编码 */
-	private String code;
+    /**
+     * 编码
+     */
+    private String code;
 
-	/** 备注 */
-	private String remark;
+    /**
+     * 备注
+     */
+    private String remark;
 
-	/** 是否启用 */
-	private Boolean enable;
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
 
-	public static Dictionary init(DictionaryParam in) {
-		return DictionaryConvert.CONVERT.convert(in);
-	}
+    public static Dictionary init(DictionaryParam in) {
+        return DictionaryConvert.CONVERT.convert(in);
+    }
 
-	@Override
-	public DictionaryDto toDto() {
-		return DictionaryConvert.CONVERT.convert(this);
-	}
+    @Override
+    public DictionaryDto toDto() {
+        return DictionaryConvert.CONVERT.convert(this);
+    }
 
 }

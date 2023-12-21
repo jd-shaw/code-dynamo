@@ -11,9 +11,12 @@ import com.shaw.message.convert.SiteMessageConvert;
 import com.shaw.message.dto.SiteMessageDto;
 import com.shaw.mysql.jpa.entity.BaseDomain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 站内信
@@ -21,11 +24,14 @@ import lombok.experimental.Accessors;
  * @author shaw
  * @date 2023/06/30
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "site_message")
+@EqualsAndHashCode(callSuper = true)
 public class SiteMessage extends BaseDomain implements EntityBaseFunction<SiteMessageDto> {
 
 	/** 消息标题 */

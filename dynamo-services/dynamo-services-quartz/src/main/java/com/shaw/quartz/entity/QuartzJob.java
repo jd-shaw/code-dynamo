@@ -5,9 +5,12 @@ import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.quartz.convert.QuartzJobConvert;
 import com.shaw.quartz.dto.QuartzJobDto;
 import com.shaw.quartz.param.QuartzJobParam;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,6 +22,9 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "quartz_job")
 public class QuartzJob extends BaseDomain implements EntityBaseFunction<QuartzJobDto> {

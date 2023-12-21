@@ -4,9 +4,12 @@ import com.shaw.commons.function.EntityBaseFunction;
 import com.shaw.mysql.jpa.entity.BaseDomain;
 import com.shaw.quartz.convert.QuartzJobConvert;
 import com.shaw.quartz.dto.QuartzJobLogDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,6 +22,9 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 @Table(name = "quartz_job_log")
 public class QuartzJobLog extends BaseDomain implements EntityBaseFunction<QuartzJobLogDto> {

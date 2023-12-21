@@ -8,10 +8,12 @@ import com.shaw.iam.core.upms.convert.RolePathConvert;
 import com.shaw.iam.dto.upms.RolePathDto;
 import com.shaw.mysql.jpa.entity.BaseDomain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 角色路径权限表
@@ -23,6 +25,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @Entity
+@SuperBuilder
 @Table(name = "iam_role_path")
 @NoArgsConstructor
 public class RolePath extends BaseDomain implements EntityBaseFunction<RolePathDto> {

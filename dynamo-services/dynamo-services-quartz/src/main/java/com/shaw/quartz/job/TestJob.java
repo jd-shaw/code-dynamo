@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @JobLog
 //@Component
-@DisallowConcurrentExecution
+//@DisallowConcurrentExecution
 public class TestJob extends QuartzJobBean {
 
 	@Override

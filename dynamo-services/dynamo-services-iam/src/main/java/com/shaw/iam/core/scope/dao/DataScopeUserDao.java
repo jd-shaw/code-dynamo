@@ -1,11 +1,13 @@
 package com.shaw.iam.core.scope.dao;
 
-import java.util.List;
-
+import com.shaw.iam.core.scope.entity.DataScopeUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.shaw.iam.core.scope.entity.DataScopeUser;
+import java.util.List;
 
 /**
  * @author shaw
@@ -14,8 +16,11 @@ import com.shaw.iam.core.scope.entity.DataScopeUser;
 @Repository
 public interface DataScopeUserDao extends JpaRepository<DataScopeUser, String> {
 
-	public void deleteByDataScopeId(String dataScopeId);
+    @Modifying
+    @Query("DELETE FROM DataScopeUser u WHERE u.dataScope.id = :dataScopeId")
+    void deleteByDataScopeId(@Param("dataScopeId") String dataScopeId);
 
-	public List<DataScopeUser> findByDataScopeId(String dataScopeId);
+    @Query("SELECT u FROM DataScopeUser u WHERE u.dataScope.id = :dataScopeId")
+    List<DataScopeUser> findByDataScopeId(String dataScopeId);
 
 }
