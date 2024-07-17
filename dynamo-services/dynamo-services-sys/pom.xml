@@ -45,6 +45,7 @@
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
 
+
         <!-- 类型转换 -->
         <dependency>
             <groupId>org.mapstruct</groupId>
